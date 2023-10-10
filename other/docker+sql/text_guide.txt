@@ -1,0 +1,20 @@
+use the PowerShell\cmd\docker console
+Загрузка образа MySQL:
+docker pull mysql
+Создание контейнера MySQL:
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=пароль -d mysql
+(вместо "пароль" вставьте свой пароль, только учтите что при вводе пароля он не будет отображаться)
+Проверьте работу контейнера:
+docker ps
+Подключитесь к MySQL:
+docker exec -it mysql-container mysql -u root –p
+Остановка и удаление контейнера:
+docker stop mysql-container
+docker rm mysql-container
+Вы можете создать новую базу данных с помощью команды MySQL. Например, чтобы создать базу данных с именем "mydatabase", выполните следующую команду:
+CREATE DATABASE mydatabase;
+Например, чтобы создать пользователя с именем "user" и паролем "password" и предоставить ему доступ к базе данных "mydatabase", выполните следующие команды:
+CREATE USER 'user'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON mydatabase.* TO 'user'@'%';
+FLUSH PRIVILEGES;
+После завершения настройки MySQL, вы можете выйти из интерактивного режима MySQL, нажав Ctrl + D (или введите exit и нажмите Enter).
