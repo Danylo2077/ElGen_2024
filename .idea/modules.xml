@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ElGen.iml" filepath="$PROJECT_DIR$/.idea/ElGen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/back-end/ElGen.iml" filepath="$PROJECT_DIR$/back-end/ElGen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/front-end/front-end.iml" filepath="$PROJECT_DIR$/front-end/front-end.iml" />
     </modules>
   </component>
 </project>
