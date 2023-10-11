@@ -1,4 +1,4 @@
-package com.example.elgen.repository;
+package com.elgen.repository;
 
 public class UserRepository {
 }

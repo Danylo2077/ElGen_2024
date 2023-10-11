@@ -1,4 +1,4 @@
-package com.example.elgen.service;
+package com.elgen.service;
 
 public class UserService {
 }

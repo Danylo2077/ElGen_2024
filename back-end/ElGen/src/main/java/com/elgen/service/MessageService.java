@@ -1,5 +1,5 @@
 //service содержит сервисы для обработки бизнес-логики.
-package com.example.elgen.service;
+package com.elgen.service;
 
 public class MessageService {
 }

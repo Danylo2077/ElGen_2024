@@ -1,5 +1,5 @@
 //model содержит модели данных, такие как User и Message.
-package com.example.elgen.model;
+package com.elgen.model;
 
 public class Message {
 }
