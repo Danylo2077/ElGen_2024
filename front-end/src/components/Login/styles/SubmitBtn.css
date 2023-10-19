@@ -1,0 +1,51 @@
+button {
+border-style: none;
+display: block;
+margin: 0 auto;
+width: 34.75rem;
+height: 5.75rem;
+flex-shrink: 0;
+border-radius: 2.5625rem;
+background: rgba(0, 0, 0, 0.82);
+backdrop-filter: blur(5px);
+color: #FFF;
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-bottom: 1rem;
+}
+button:hover {
+box-shadow: 0 0 0.6rem 0.2rem #3a4a84;
+transition: 0.3s all;
+}
+button:active {
+transform: scale(0.98);
+transition: 0.3s all;
+}
+.create_account {
+text-align: center;
+color: #FFF;
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 0.07rem;
+}
+.create_account div {
+display: inline-block;
+text-decoration: none;
+color: #83CBFF;
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+letter-spacing: 0.07rem;
+margin-left: 0.3rem;
+}
+.create_account div:hover {
+cursor:pointer;
+}

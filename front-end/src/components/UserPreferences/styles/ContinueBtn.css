@@ -1,0 +1,22 @@
+input {
+    display: flex;
+    justify-content: center;
+    width: 22.875rem;
+    height: 5.75rem;
+    flex-shrink: 0;
+    border-radius: 3rem;
+    background: rgba(0, 0, 0, 0.516);
+    border: none;
+    color: rgba(190, 190, 190, 0.733);
+    font-family: Open Sans;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+input:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 0.6rem 0.2rem #3961ee;
+    transition: 0.3s all;
+}

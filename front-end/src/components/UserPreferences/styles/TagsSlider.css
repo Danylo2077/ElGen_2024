@@ -1,0 +1,58 @@
+.mediaScroller {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    overflow-x:scroll;
+    overflow-y: hidden;
+    height: 23.25rem;
+    margin: 6rem 0 3rem 0;
+}
+
+.mediaScroller::-webkit-scrollbar
+{
+    width:0;
+}
+
+.tagRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tagRow:nth-child(2n+1) .tagWrapper:nth-child(1){ 
+    margin-left: 5rem ;
+}
+
+
+
+.tagWrapper {
+    margin-right: 1rem;
+    display: flex;
+    align-items:center;
+    justify-content: flex-start;
+    padding:0 2.5rem 0 0.6rem;
+    min-width: 20.3125rem;
+    height: 6.75rem;
+    flex-shrink: 0;
+    border-radius: 5.5rem;
+    border: 2px solid #0C0F24;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(5px);
+}
+
+.tagIcon {
+    margin-right: 5%;
+    border-radius: 100%;
+    width: 5.4375rem;
+    height: 5.4375rem;
+    flex-shrink: 0;
+    background:#fff;
+}
+
+.tagName {
+    color: #FFF;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 700;
+}

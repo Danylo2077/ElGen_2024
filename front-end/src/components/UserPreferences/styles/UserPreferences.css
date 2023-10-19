@@ -1,0 +1,7 @@
+
+body{
+    position: relative;
+    height: 100vh;
+    padding: 1.8rem 0 3.5rem 0;
+    background-image: radial-gradient(37% 73% at 38% 111%, #5B07FFFF -107%, #0D1EFF2E 137%),radial-gradient(10% 34% at 67% 84%, #FEFF07FF -489%, #F2FF0700 140%),radial-gradient(13% 16% at 72% 39%, #833D3D8F -94%, #92454591 -40%, #DA132800 249%),radial-gradient(34% 70% at 88% 103%, #07FF00FF -34%, #070B1B00 135%),linear-gradient(180deg, #000000FF 34%, #98FFFEFF 190%);
+  }

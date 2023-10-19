@@ -1,0 +1,33 @@
+ button {
+        border-style: none;
+        display: block;
+        margin: 0 auto;
+        width: 34.75rem;
+        height: 5.75rem;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+        border-radius: 2.5625rem;
+        background: rgba(0, 0, 0, 0.82);
+        -webkit-backdrop-filter: blur(5px);
+                backdrop-filter: blur(5px);
+        color: #FFF;
+        font-family: Open Sans;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 0.07rem;
+        margin-bottom: 1rem;
+      }
+       button:hover {
+        -webkit-box-shadow: 0 0 0.6rem 0.2rem #3a4a84;
+                box-shadow: 0 0 0.6rem 0.2rem #3a4a84;
+        -webkit-transition: 0.3s all;
+        transition: 0.3s all;
+      }
+       button:active {
+        -webkit-transform: scale(0.98);
+                transform: scale(0.98);
+        -webkit-transition: 0.3s all;
+        transition: 0.3s all;
+      }
