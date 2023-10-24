@@ -2,41 +2,27 @@ package com.elgen.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @IdClass(User.class)
-@Table(name = "userchat")
+@Table(name = "user_chat")
 public class UserChat {
     @Id
     @ManyToOne
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JoinColumn(name = "user_id")
+    @Getter @Setter
     private User user;
     @JsonProperty(value = "Chat_id")
     @Column(name = "chat_id")
+    @Getter @Setter
     private String chat_id;
 
-    public UserChat() {
-    }
-
-    public UserChat(Long user_id, String chat_id) {
-        this.user = new User();
-        this.user.setUser_id(user_id);
-        this.chat_id = chat_id;
-    }
-
-    public Long getUser_id() {
-        return user.getUser_id();
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user.setUser_id(user_id);
-    }
-    public String getChat_id() {
-        return chat_id;
-    }
-
-    public void setChat_id(String chat_id) {
-        this.chat_id = chat_id;
-    }
 }

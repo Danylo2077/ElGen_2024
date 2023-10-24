@@ -1,16 +1,23 @@
 package com.elgen.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @IdClass(User.class)
-@Table(name = "usergroup")
+@Table(name = "user_group")
 public class UserGroup {
     @Id
     @ManyToOne
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JoinColumn(name = "user_id")
+    @Getter @Setter
     private User user;
 
 
@@ -18,31 +25,8 @@ public class UserGroup {
     @ManyToOne
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JoinColumn(name = "group_id")
+    @Getter @Setter
     private Group group;
 
-    public UserGroup() {
-    }
 
-    public Long getUser_id() {
-        return user.getUser_id();
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user.setUser_id(user_id);
-    }
-
-    public UserGroup(Long user_id, String group_id) {
-        this.user = new User();
-        this.user.setUser_id(user_id);
-        this.group = new Group();
-        this.group.setGroup_id(group_id);
-    }
-
-    public String getGroup_id() {
-        return group.getGroup_id();
-    }
-
-    public void setGroup_id(String group_id) {
-        this.group.setGroup_id(group_id);
-    }
 }
