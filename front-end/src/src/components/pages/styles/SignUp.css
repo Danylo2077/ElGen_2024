@@ -1,0 +1,113 @@
+body{
+overflow: hidden;
+height: 100vh;
+padding: 9.8rem 0 16.2rem 0;
+background-image: linear-gradient(0deg, #A1D8FFA1 -123%, #30D9D100 -26%, #000000FF 74%),radial-gradient(34% 215% at 70% 75%, #4107FF21 20%, #083EF300 39%),radial-gradient(31% 76% at 49% 85%, #16A4F0FF 14%, #718AFFFF 100%);
+}
+
+h1 {
+text-align: center;
+color: #FFF;
+font-family: Karla;
+font-size: 1.68rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: 0.07rem;
+}
+h2 {
+text-align: center;
+color: rgba(86, 85, 85, 0.83);
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.07rem;
+margin-bottom: 4rem;
+}
+
+.input-box {
+display: flex;
+align-items: center;
+flex-flow: column;
+}
+.input-box input {
+border-color: linear-gradient(rgba(0, 0, 0, 0.4745098039), rgba(73, 134, 253, 0.8196078431));
+padding: 0 0 0 2.5rem;
+color: #868484;
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.07rem;
+border-radius: 2.5625rem;
+border: 2px solid #000;
+background: rgba(0, 0, 0, 0.437);
+background-blend-mode: darken;
+backdrop-filter: blur(5px);
+width: 34.75rem;
+height: 5.8125rem;
+margin-bottom: 1rem;
+}
+
+.log-in {
+display: flex;
+justify-content: space-between;
+text-align: center;
+color: #FFF;
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 0.07rem;
+margin-bottom: 1.4rem;
+}
+.log-in a {
+margin-left: 0.5rem;
+display: inline-block;
+text-decoration: none;
+color: #83CBFF;
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+letter-spacing: 0.07rem;
+}
+
+button {
+border-style: none;
+display: block;
+margin: 0 auto;
+width: 34.75rem;
+height: 5.75rem;
+-ms-flex-negative: 0;
+    flex-shrink: 0;
+border-radius: 2.5625rem;
+background: rgba(0, 0, 0, 0.82);
+-webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+color: #FFF;
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: 0.07rem;
+margin-bottom: 1rem;
+}
+button:hover {
+-webkit-box-shadow: 0 0 0.6rem 0.2rem #3a4a84;
+        box-shadow: 0 0 0.6rem 0.2rem #3a4a84;
+-webkit-transition: 0.3s all;
+transition: 0.3s all;
+}
+button:active {
+-webkit-transform: scale(0.98);
+        transform: scale(0.98);
+-webkit-transition: 0.3s all;
+transition: 0.3s all;
+}
