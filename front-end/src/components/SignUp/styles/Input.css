@@ -1,0 +1,47 @@
+ .input_box {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+ .input_box input {
+  border-color: linear-gradient(rgba(0, 0, 0, 0.4745098039), rgba(73, 134, 253, 0.8196078431));
+  padding: 0 0 0 2.5rem;
+  color: #868484;
+  font-family: Open Sans;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.07rem;
+  border-radius: 2.5625rem;
+  border: 2px solid #000;
+  background: rgba(0, 0, 0, 0.437);
+  background-blend-mode: darken;
+  backdrop-filter: blur(5px);
+  width: 34.75rem;
+  height: 5.8125rem;
+  margin-bottom: 1rem;
+}
+
+ .log_in {
+  text-align: center;
+  color: #FFF;
+  font-family: Open Sans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.07rem;
+  margin-bottom: 1.4rem;
+}
+ .log_in div {
+  display: inline-block;
+  text-decoration: none;
+  color: #83CBFF;
+  font-family: Open Sans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: 0.07rem;
+}

@@ -1,0 +1,15 @@
+.skip {
+    margin-right: 3.8rem;
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.07rem;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 2.7rem;
+    right: 3.8rem;
+}

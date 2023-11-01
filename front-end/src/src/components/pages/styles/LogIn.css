@@ -1,0 +1,155 @@
+body {
+overflow: hidden;
+height: 100vh;
+padding: 14.63rem 0 20.31rem 0;
+background-image: linear-gradient(0deg, #A1D8FFA1 -123%, #30D9D100 -26%, #000000FF 74%),radial-gradient(34% 215% at 70% 75%, #4107FF21 20%, #083EF300 39%),radial-gradient(31% 76% at 49% 85%, #16A4F0FF 14%, #718AFFFF 100%);
+}
+
+h1 {
+text-align: center;
+color: #FFF;
+font-family: Karla;
+font-size: 1.75rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+h2 {
+text-align: center;
+color: rgba(86, 85, 85, 0.83);
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-bottom: 4rem;
+}
+
+.input-box {
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+align-items: center;
+flex-flow: column;
+}
+input {
+border-color: linear-gradient(rgba(0, 0, 0, 0.4745098039), rgba(73, 134, 253, 0.8196078431));
+padding: 0 0 0 2.5rem;
+color: #868484;
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+border-radius: 2.5625rem;
+border: 2px solid #000;
+background: rgba(0, 0, 0, 0.437);
+background-blend-mode: darken;
+backdrop-filter: blur(5px);
+width: 34.75rem;
+height: 5.8125rem;
+letter-spacing: 0.07rem;
+}
+input:nth-child(1) {
+margin-bottom: 1rem;
+}
+input:nth-child(2) {
+margin-bottom: 0.7rem;
+}
+
+.remember-forgot {
+display: flex;
+width: 29.375rem;
+justify-content: space-between;
+margin-bottom: 0.7rem;
+letter-spacing: 0.07rem;
+}
+
+.remember-forgot .remember-forgot-wrapper {
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+    position: relative;
+}
+
+.remember-forgot a {
+text-decoration: none;
+color: rgba(255, 255, 255, 0.66);
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.07rem;
+}
+.remember-forgot input {
+width: 0.89231rem;
+height: 0.912rem;
+position: absolute;
+bottom: -50%;
+}
+.remember-forgot label {
+color: rgba(255, 255, 255, 0.66);
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.07rem;
+}
+
+button {
+border-style: none;
+display: block;
+margin: 0 auto;
+width: 34.75rem;
+height: 5.75rem;
+flex-shrink: 0;
+border-radius: 2.5625rem;
+background: rgba(0, 0, 0, 0.82);
+backdrop-filter: blur(5px);
+color: #FFF;
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-bottom: 1rem;
+}
+button:hover {
+box-shadow: 0 0 0.6rem 0.2rem #3a4a84;
+transition: 0.3s all;
+}
+button:active {
+transform: scale(0.98);
+transition: 0.3s all;
+}
+.create-account {
+display: flex;
+justify-content: space-between;
+text-align: center;
+color: #FFF;
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 0.07rem;
+}
+.create-account a {
+display: inline-block;
+text-decoration: none;
+color: #83CBFF;
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+letter-spacing: 0.07rem;
+margin-left: 0.3rem;
+}
+.create-account div:hover {
+cursor:pointer;
+}
+
+

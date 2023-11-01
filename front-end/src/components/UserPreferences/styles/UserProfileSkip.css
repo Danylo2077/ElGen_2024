@@ -1,0 +1,22 @@
+.profileWrapper {
+    margin:0 0 0 3.3rem ;
+    display: flex;
+    align-items: center;
+    width: 12.8rem;
+    height: 2.6rem;
+}
+
+.profileIcon {
+    display: inline-block;
+    min-width: 2.6875rem;
+    height: 2.6875rem;
+    background-color: #B4ACAC;
+    border-radius: 100%;
+    margin-right: 0.7rem;
+}
+.username {
+    color: #AEAEAE;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 600;
+}

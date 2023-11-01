@@ -1,0 +1,63 @@
+.input_box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+ flex-flow: column;
+  }
+   input {
+    border-color: linear-gradient(rgba(0, 0, 0, 0.4745098039), rgba(73, 134, 253, 0.8196078431));
+    padding: 0 0 0 2.5rem;
+    color: #868484;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 2.5625rem;
+    border: 2px solid #000;
+    background: rgba(0, 0, 0, 0.437);
+    background-blend-mode: darken;
+    backdrop-filter: blur(5px);
+    width: 34.75rem;
+    height: 5.8125rem;
+    letter-spacing: 0.07rem;
+  }
+   input:nth-child(1) {
+    margin-bottom: 1rem;
+  }
+   input:nth-child(2) {
+    margin-bottom: 0.7rem;
+  }
+
+  .remember-forgot {
+    display: flex;
+    width: 29.375rem;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.07rem;
+    }
+    .remember-forgot a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.66);
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.07rem;
+    }
+    .remember-forgot input {
+    width: 0.89231rem;
+    height: 0.912rem;
+    }
+    .remember-forgot label {
+    color: rgba(255, 255, 255, 0.66);
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.07rem;
+    margin-left: 0.25rem;
+    }
