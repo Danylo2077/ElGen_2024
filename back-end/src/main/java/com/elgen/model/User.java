@@ -50,15 +50,15 @@ public class User implements Serializable {
     @Getter @Setter
     private String bio;
 
+//    @OneToOne
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @JoinColumn(name = "User_account_status_id")
+//    private UserAccountStatus userAccountStatus;
+
     @JsonProperty(value = "User_Role")
     @Column(name = "user_role")
     @Getter @Setter
     private String user_role;
-
-    @JsonProperty(value = "User_Account_Status_ID")
-    @Column(name = "user_account_status_id")
-    @Getter @Setter
-    private String user_account_status_id;
 
     @JsonProperty(value = "Last_Login")
     @Column(name = "last_login")
@@ -84,5 +84,13 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     @Getter @Setter
     private List<UserChat> userChat;
+
+    @ManyToOne
+    @JoinColumn(name = "user_account_status_id")
+    private UserAccountStatus userAccountStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "user_role_id")
+    private UserRole userRole;
 
 }

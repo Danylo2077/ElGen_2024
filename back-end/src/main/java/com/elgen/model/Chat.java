@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Blob;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -28,10 +30,15 @@ public class Chat {
     @Column(name = "chat_name")
     @Getter @Setter
     private String chat_name;
+
     @JsonProperty(value = "Chat_description")
     @Column(name = "chat_description")
     @Getter @Setter
     private String chat_description;
 
+    @OneToMany(mappedBy = "chat")
+    private List<UserChat> userChat;
+
 
 }
+

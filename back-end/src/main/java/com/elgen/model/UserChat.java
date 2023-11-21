@@ -11,17 +11,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
+@Getter @Setter
 @Table(name = "user_chat")
 public class UserChat {
     @Id
     @ManyToOne
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JoinColumn(name = "user_id")
-    @Getter @Setter
     private User user;
+
+    @Id
+    @ManyToOne
     @JsonProperty(value = "Chat_id")
-    @Column(name = "chat_id")
-    @Getter @Setter
-    private String chat_id;
+    @JoinColumn(name = "chat_id")
+    private Chat chat;
 
 }

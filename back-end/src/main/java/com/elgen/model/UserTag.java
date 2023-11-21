@@ -12,15 +12,15 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Getter @Setter
-@Table(name = "tag")
-public class Tag {
+@Table(name = "user_tag")
+public class UserTag {
     @Id
-    @JsonProperty(value = "Tag_id")
-    @Column(name = "tag_id", columnDefinition = "serial")
+    @JsonProperty(value = "User_tag_id")
+    @Column(name = "User_tag_id", columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long tag_id;
+    private Long user_tag_id;
 
-    @JsonProperty(value = "Tag_name")
-    @Column(name = "tag_name")
-    private String tag_name;
+    @JsonProperty(value = "User_tag_name")
+    @Column(name = "User_tag_name")
+    private String user_tag_name;
 }
