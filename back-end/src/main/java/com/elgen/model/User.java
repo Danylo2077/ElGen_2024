@@ -73,9 +73,13 @@ public class User implements Serializable {
     @Getter @Setter
     private List<UserGroup> userGroup;
 
-    @OneToOne(mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     @Getter @Setter
-    private Follower follower;
+    private List<Follower> follower;
+
+//    @OneToOne(mappedBy = "user")
+//    @Getter @Setter
+//    private Follower follower;
 
     @OneToMany(mappedBy = "user")
     @Getter @Setter

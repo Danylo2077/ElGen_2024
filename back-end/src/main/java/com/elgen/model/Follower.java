@@ -14,17 +14,17 @@ import lombok.NoArgsConstructor;
 @Table(name = "follower")
 public class Follower {
     @Id
-    @OneToOne
-    @MapsId
-    @JsonProperty(value = "User_id")
-    @PrimaryKeyJoinColumn(name = "user_id", columnDefinition = "serial")
+    @ManyToOne
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JoinColumn(name = "user_id")
     @Getter @Setter
     private User user;
+
     @JsonProperty(value = "Follower_user_id")
     @Column(name = "follower_user_id")
     @Getter @Setter
     private Long follower_user_id;
+
     @JsonProperty(value = "Follow_user_id")
     @Column(name = "follow_user_id")
     @Getter @Setter

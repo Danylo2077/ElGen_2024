@@ -33,7 +33,7 @@ public class Group implements Serializable {
     @Lob
     @Column(name = "icon")
     @Getter @Setter
-    private Blob icon;
+    private Blob group_logo;
 
     @OneToMany(mappedBy = "group")
     @Getter @Setter

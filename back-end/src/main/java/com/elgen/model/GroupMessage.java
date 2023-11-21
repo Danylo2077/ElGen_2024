@@ -13,14 +13,15 @@ import lombok.NoArgsConstructor;
 @Table(name = "group_message")
 public class GroupMessage {
     @Id
-    @ManyToOne
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JoinColumn(name = "group_id")
+    @ManyToOne
     @Getter @Setter
     private Group group;
-
     @Id
-    @ManyToOne
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JoinColumn(name = "message_id")
+    @ManyToOne
     @Getter @Setter
     private Message message;
 }

@@ -18,7 +18,7 @@ public class UserAccountStatus {
     @Column(name = "user_account_status_id", columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter @Setter
-    private Long user_account_status_id;
+    private String user_account_status_id;
     @JsonProperty(value="User_account_status_name")
     @Column(name="user_account_status_name")
     @Getter @Setter

@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.sql.Blob;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -30,6 +33,9 @@ public class Attachment {
     @Getter @Setter
     private String attachment_name;
 
-//    private Blob attachment_data;
+    @Lob
+    @Column(name = "icon")
+    @Getter @Setter
+    private Blob attachment_data;
 
 }
