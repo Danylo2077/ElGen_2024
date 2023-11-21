@@ -1,5 +1,5 @@
 package com.elgen.model;
-//elik LOX
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -15,22 +15,20 @@ import java.sql.Blob;
 @Data
 @Entity
 @Table(name = "attachment")
+@Getter @Setter
 public class Attachment {
     @Id
     @JsonProperty(value = "Attachment_id")
     @Column(name = "attachment_id", columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
     private Long attachment_id;
 
     @ManyToOne
     @JoinColumn(name = "message_id")
-    @Getter @Setter
     private Message message;
 
     @JsonProperty(value = "Attachment_name")
     @Column(name = "attachment_name")
-    @Getter @Setter
     private String attachment_name;
 
     @Lob

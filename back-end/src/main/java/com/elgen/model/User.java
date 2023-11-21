@@ -97,4 +97,5 @@ public class User implements Serializable {
     @JoinColumn(name = "user_tag_id")
     private UserTag userTag;
 
+    private String full_name = name + " " + last_name;
 }
