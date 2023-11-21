@@ -1,5 +1,5 @@
 package com.elgen.model;
-//VLADIK LOX
+//elik LOX
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
