@@ -41,10 +41,6 @@ public class Message implements Serializable {
     @JoinColumn(name = "reply_to")
     private Message reply_to;
 
-    @JsonProperty(value = "Comment_id")
-    @Column(name = "comment_id")
-    private Integer comment_id;
-
     @JsonProperty(value = "Is_post")
     @Column(name = "is_post")
     private Boolean is_post;
