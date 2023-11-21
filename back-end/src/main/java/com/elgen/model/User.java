@@ -77,10 +77,6 @@ public class User implements Serializable {
     @Getter @Setter
     private List<Follower> follower;
 
-//    @OneToOne(mappedBy = "user")
-//    @Getter @Setter
-//    private Follower follower;
-
     @OneToMany(mappedBy = "user")
     @Getter @Setter
     private List<UserChat> userChat;

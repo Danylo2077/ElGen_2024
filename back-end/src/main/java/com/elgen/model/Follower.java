@@ -7,23 +7,28 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 @Getter @Setter
+@IdClass(FollowerId.class)
 @Table(name = "follower")
 public class Follower {
     @Id
-    @ManyToOne
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @JoinColumn(name = "user_id")
+    @ManyToOne
     private User user;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "follower_user_id")
     private User follower_user_id;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "follow_user_id")
     private User follow_user_id;
