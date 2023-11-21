@@ -11,23 +11,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
+@Getter @Setter
 @Table(name = "follower")
 public class Follower {
     @Id
     @ManyToOne
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JoinColumn(name = "user_id")
-    @Getter @Setter
     private User user;
 
-    @JsonProperty(value = "Follower_user_id")
-    @Column(name = "follower_user_id")
-    @Getter @Setter
-    private Long follower_user_id;
+    @ManyToOne
+    @JoinColumn(name = "follower_user_id")
+    private User follower_user_id;
 
-    @JsonProperty(value = "Follow_user_id")
-    @Column(name = "follow_user_id")
-    @Getter @Setter
-    private Long follow_user_id;
+    @ManyToOne
+    @JoinColumn(name = "follow_user_id")
+    private User follow_user_id;
 }
 

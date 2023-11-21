@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -23,4 +26,7 @@ public class UserTag {
     @JsonProperty(value = "User_tag_name")
     @Column(name = "User_tag_name")
     private String user_tag_name;
+
+    @OneToMany(mappedBy = "userTag")
+    private List<User> user;
 }

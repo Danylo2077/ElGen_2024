@@ -93,4 +93,8 @@ public class User implements Serializable {
     @JoinColumn(name = "user_role_id")
     private UserRole userRole;
 
+    @ManyToOne
+    @JoinColumn(name = "user_tag_id")
+    private UserTag userTag;
+
 }
