@@ -1,11 +1,9 @@
 package com.elgen.repository;
 
-import com.elgen.model.User;
 import com.elgen.model.UserReaction;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+@Repository
 public interface UserReactionRepository extends JpaRepository<UserReaction, Long> {
-    List<UserReaction> findByUser(User user);
 }
