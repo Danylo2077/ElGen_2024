@@ -32,8 +32,8 @@ public class Reaction {
 
 
     @JsonProperty(value = "Reaction_type_id")
-    @Column(name = "reation_type_id")
+    @Column(name = "reaction_type_id")
     @Getter @Setter
-    private Long reation_type_id;
+    private Long reaction_type_id;
 
 }

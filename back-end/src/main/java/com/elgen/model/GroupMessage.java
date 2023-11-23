@@ -9,20 +9,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Getter @Setter
 @Entity
-@IdClass(Group.class)
 @Table(name = "group_message")
 public class GroupMessage {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @JoinColumn(name = "group_id")
     @ManyToOne
-    @Getter @Setter
     private Group group;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @JoinColumn(name = "message_id")
     @ManyToOne
-    @Getter @Setter
     private Message message;
 }

@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -23,4 +26,7 @@ public class UserRole {
     @Column(name = "user_role_name")
     @Getter @Setter
     private String user_role_name;
+
+    @OneToMany(mappedBy = "userRole")
+    private List<User> user;
 }

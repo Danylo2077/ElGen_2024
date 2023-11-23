@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Getter @Setter
 @Entity
 @Table(name="group_role")
 public class GroupRole {
@@ -17,11 +18,10 @@ public class GroupRole {
     @JsonProperty(value = "Group_role_id")
     @Column(name = "group_role_id", columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
     private Long group_role_id;
+
     @JsonProperty(value = "Group_role_name")
     @Column(name = "group_role_name")
-    @Getter @Setter
     private String group_role_name;
 
 }

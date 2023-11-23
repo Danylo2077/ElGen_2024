@@ -7,9 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Getter @Setter
 @Entity
 @Table(name= "comment")
 public class Comment {
@@ -17,12 +21,13 @@ public class Comment {
     @JsonProperty(value = "Comment_id")
     @Column(name = "comment_id", columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
     private Long comment_id;
-    @JsonProperty(value = "Parrent_comment_id")
-    @Column(name = "parent_comment_id")
-    @Getter @Setter
-    private Long parent_comment_id;
 
+    @ManyToOne
+    @JoinColumn(name = "parent_comment_id")
+    private Comment parent_comment_id;
+
+    @OneToMany(mappedBy = "comment")
+    private List<Message> message;
 
 }
