@@ -9,11 +9,11 @@ import java.util.List;
 
 @Repository
 public interface FollowerRepository extends JpaRepository<Follower, Long> {
-    @Override
-    List<Follower> findAll();
-    List<Follower> findFollowerByUser_id(User user);
-    void findFollowerByUser_name(Long full_name);
-
-    void delete(Follower follower);
-    void deleteByUser_id(User user);
+//    @Override
+//    List<Follower> findAll();
+//    List<Follower> findFollowerByUser_id(User user);
+//    List<Follower> findFollowerByName(User full_name);
+//
+//    void delete(Follower follower);
+//    void deleteByUser_id(User user);
 }

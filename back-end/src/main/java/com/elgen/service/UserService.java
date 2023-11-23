@@ -29,11 +29,6 @@ public class UserService {
     public List<User> getUsersByName(String name) {
         return userRepository.findByName(name);
     }
-
-    public List<User> getUsersByUserRole(String userRole) {
-        return userRepository.findByUserRole(userRole);
-    }
-
     public User createUser(User user) {
         return userRepository.save(user);
     }
@@ -47,6 +42,6 @@ public class UserService {
     }
 
     public void deleteUserById(Long userId) {
-        userRepository.deleteByUser_id(userId);
+        userRepository.deleteById(userId);
     }
 }

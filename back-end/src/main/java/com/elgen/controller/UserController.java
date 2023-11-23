@@ -33,12 +33,6 @@ public class UserController {
     public List<User> getUsersByName(@PathVariable String name) {
         return userService.getUsersByName(name);
     }
-
-    @GetMapping("/role/{role}")
-    public List<User> getUsersByUserRole(@PathVariable String role) {
-        return userService.getUsersByUserRole(role);
-    }
-
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);

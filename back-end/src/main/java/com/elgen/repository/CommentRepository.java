@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    List<Comment> findCommentByComment_id(Long comment_id);
+//    List<Comment> findCommentByComment_id(Long comment_id);
     Comment save(Comment comment);
-    void deleteByComment_id (Long comment_id);
+//    void deleteByComment_id (Long comment_id);
 }

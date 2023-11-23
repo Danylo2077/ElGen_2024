@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface AttachmentRepository extends JpaRepository<Attachment, Long> {
     Attachment save(Attachment attachment);
     void delete(Attachment attachment);
-    void deleteByUser_id(Long attachment_id);
 }

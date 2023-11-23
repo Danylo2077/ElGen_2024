@@ -50,11 +50,6 @@ public class User implements Serializable {
     @Getter @Setter
     private String bio;
 
-//    @OneToOne
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @JoinColumn(name = "User_account_status_id")
-//    private UserAccountStatus userAccountStatus;
-
     @JsonProperty(value = "User_Role")
     @Column(name = "user_role")
     @Getter @Setter
