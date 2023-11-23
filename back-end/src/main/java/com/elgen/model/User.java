@@ -55,11 +55,6 @@ public class User implements Serializable {
     @Getter @Setter
     private String user_role;
 
-    @JsonProperty(value = "User_Account_Status_ID")
-    @Column(name = "user_account_status_id")
-    @Getter @Setter
-    private String user_account_status_id;
-
     @JsonProperty(value = "Last_Login")
     @Column(name = "last_login")
     @Getter @Setter
@@ -73,12 +68,25 @@ public class User implements Serializable {
     @Getter @Setter
     private List<UserGroup> userGroup;
 
-    @OneToOne(mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     @Getter @Setter
-    private Follower follower;
+    private List<Follower> follower;
 
     @OneToMany(mappedBy = "user")
     @Getter @Setter
     private List<UserChat> userChat;
 
+    @ManyToOne
+    @JoinColumn(name = "user_account_status_id")
+    private UserAccountStatus userAccountStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "user_role_id")
+    private UserRole userRole;
+
+    @ManyToOne
+    @JoinColumn(name = "user_tag_id")
+    private UserTag userTag;
+
+    private String full_name = name + " " + last_name;
 }

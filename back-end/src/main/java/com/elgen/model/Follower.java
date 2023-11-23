@@ -7,27 +7,30 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
+@Getter @Setter
+@IdClass(FollowerId.class)
 @Table(name = "follower")
 public class Follower {
     @Id
-    @OneToOne
-    @MapsId
-    @JsonProperty(value = "User_id")
-    @PrimaryKeyJoinColumn(name = "user_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
+    @JoinColumn(name = "user_id")
+    @ManyToOne
     private User user;
-    @JsonProperty(value = "Follower_user_id")
-    @Column(name = "follower_user_id")
-    @Getter @Setter
-    private Long follower_user_id;
-    @JsonProperty(value = "Follow_user_id")
-    @Column(name = "follow_user_id")
-    @Getter @Setter
-    private Long follow_user_id;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "follower_user_id")
+    private User follower_user_id;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "follow_user_id")
+    private User follow_user_id;
 }
 
