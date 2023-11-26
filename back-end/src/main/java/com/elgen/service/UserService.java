@@ -33,15 +33,31 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public void updateUser(User user) {
-        userRepository.save(user);
+    public void updateUser(User updatedUser) {
+        Optional<User> existingUser = userRepository.findById(updatedUser.getUserId());
+
+        existingUser.ifPresent(user -> {
+            user.setName(updatedUser.getName());
+            user.setEmail(updatedUser.getEmail());
+            userRepository.save(user);
+        });
     }
 
-    public void deleteUser(User user) {
-        userRepository.delete(user);
+    public boolean deleteUser(User user) {
+        try {
+            userRepository.delete(user);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    public void deleteUserById(Long userId) {
-        userRepository.deleteById(userId);
+    public boolean deleteUserById(Long userId) {
+        try {
+            userRepository.deleteById(userId);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

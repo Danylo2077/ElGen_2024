@@ -15,19 +15,16 @@ import java.util.List;
 @Data
 @Getter @Setter
 @Entity
-@Table(name= "comment")
+@Table(name = "comment")
 public class Comment {
+
     @Id
-    @JsonProperty(value = "Comment_id")
-    @Column(name = "comment_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long comment_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "comment_id")
+    private Long commentId;
 
-    @ManyToOne
-    @JoinColumn(name = "parent_comment_id")
-    private Comment parent_comment_id;
+    @Column(name = "parent_comment_id")
+    private Long parentCommentId;
 
-    @OneToMany(mappedBy = "comment")
-    private List<Message> message;
-
+    // getters and setters
 }

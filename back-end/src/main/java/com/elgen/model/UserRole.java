@@ -14,19 +14,17 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
+@Getter @Setter
 @Table(name = "user_role")
 public class UserRole {
-    @Id
-    @JsonProperty(value = "User_role_id")
-    @Column(name = "user_role_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
-    private Long user_role_id;
-    @JsonProperty(value = "User_role_name")
-    @Column(name = "user_role_name")
-    @Getter @Setter
-    private String user_role_name;
 
-    @OneToMany(mappedBy = "userRole")
-    private List<User> user;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_role_id")
+    private Long userRoleId;
+
+    @Column(name = "user_role_name")
+    private String userRoleName;
+
+
 }

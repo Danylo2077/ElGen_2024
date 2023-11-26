@@ -9,25 +9,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Getter @Setter
 @Entity
 @Table(name = "reaction_type")
 public class ReactionType {
+
     @Id
-    @JsonProperty(value = "Reaction_type_id")
-    @Column(name = "reaction_type_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
-    private Long reaction_type_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "reaction_type_id")
+    private Long reactionTypeId;
 
-    @JsonProperty(value = "Reaction_type_name")
     @Column(name = "reaction_type_name")
-    @Getter @Setter
-    private String reacrion_type_name;
+    private String reactionTypeName;
 
-
-    @JsonProperty(value = "Color")
     @Column(name = "color")
-    @Getter @Setter
     private String color;
 
+    // getters and setters
 }

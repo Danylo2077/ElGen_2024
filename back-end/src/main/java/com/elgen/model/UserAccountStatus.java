@@ -17,17 +17,14 @@ import java.util.List;
 @Table(name="user_account_status")
 @Getter @Setter
 public class UserAccountStatus {
+
     @Id
-    @JsonProperty(value = "User_account_status_id")
-    @Column(name = "user_account_status_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String user_account_status_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_account_status_id")
+    private Long userAccountStatusId;
 
-    @JsonProperty(value="User_account_status_name")
-    @Column(name="user_account_status_name")
-    private String user_account_status_name;
+    @Column(name = "user_account_status_name")
+    private String userAccountStatusName;
 
-    @OneToMany(mappedBy = "userAccountStatus")
-    private List<User> user;
-
+    // getters and setters
 }

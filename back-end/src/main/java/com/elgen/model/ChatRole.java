@@ -13,15 +13,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "chat_role")
 public class ChatRole {
+
     @Id
-    @JsonProperty(value = "Chat_role_id")
-    @Column(name = "chat_role_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
-    private Long chat_role_id;
-    @JsonProperty(value = "Chat_role_name")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "chat_role_id")
+    private Long chatRoleId;
+
     @Column(name = "chat_role_name")
-    @Getter @Setter
-    private String chat_role_name;
+    private String chatRoleName;
 
 }

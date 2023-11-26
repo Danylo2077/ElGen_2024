@@ -14,26 +14,27 @@ import java.sql.Blob;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "attachment")
 @Getter @Setter
+@Table(name = "attachment")
 public class Attachment {
+
     @Id
-    @JsonProperty(value = "Attachment_id")
-    @Column(name = "attachment_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long attachment_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "attachment_id")
+    private Long attachmentId;
 
-    @ManyToOne
-    @JoinColumn(name = "message_id")
-    private Message message;
+    @Column(name = "message_id")
+    private Long messageId;
 
-    @JsonProperty(value = "Attachment_name")
     @Column(name = "attachment_name")
-    private String attachment_name;
+    private String attachmentName;
 
     @Lob
     @Column(name = "icon")
-    @Getter @Setter
-    private Blob attachment_data;
+    private byte[] icon;
+
+    @ManyToOne
+    @JoinColumn(name = "message_id", referencedColumnName = "message_id", insertable = false, updatable = false)
+    private Message message;
 
 }

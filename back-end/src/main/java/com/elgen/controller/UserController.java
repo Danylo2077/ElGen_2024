@@ -13,7 +13,6 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
-
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
@@ -35,6 +34,9 @@ public class UserController {
     }
     @PostMapping
     public User createUser(@RequestBody User user) {
+        System.out.println("Received request to create user: " + user);
+        User createdUser = userService.createUser(user);
+        System.out.println("Created user: " + createdUser);
         return userService.createUser(user);
     }
 
@@ -44,7 +46,7 @@ public class UserController {
 
         existingUser.ifPresent(user -> {
             user.setName(updatedUser.getName());
-            user.setLast_name(updatedUser.getLast_name());
+            user.setLastName(updatedUser.getLastName());
             user.setEmail(updatedUser.getEmail());
             userService.updateUser(user);
         });

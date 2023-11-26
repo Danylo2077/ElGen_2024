@@ -13,28 +13,22 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @Table(name = "group")
-public class Group implements Serializable {
+public class Group {
+
     @Id
-    @JsonProperty(value = "Group_id")
-    @Column(name = "group_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String group_id;
-
-    @JsonProperty(value = "Group_name")
-    @Column(name = "group_name")
-    private String group_name;
-
-    @JsonProperty(value = "Group_description")
-    @Column(name = "group_description")
-    private String group_description;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "group_id")
+    private Long groupId;
 
     @Lob
     @Column(name = "icon")
-    private Blob group_logo;
+    private byte[] icon;
 
-    @OneToMany(mappedBy = "group")
-    private List<UserGroup> userGroup;
+    @Column(name = "group_name")
+    private String groupName;
 
-    @OneToMany(mappedBy = "group")
-    private List<GroupMessage> groupMessage;
+    @Column(name = "group_description")
+    private String groupDescription;
+
+    // getters and setters
 }
