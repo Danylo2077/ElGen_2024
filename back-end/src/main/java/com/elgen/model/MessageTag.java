@@ -18,16 +18,14 @@ import java.util.List;
 @Getter @Setter
 @Table(name = "message_tag")
 public class MessageTag {
+
     @Id
-    @JsonProperty(value = "Message_tag_id")
-    @Column(name = "Message_tag_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long message_tag_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "message_tag_id")
+    private Long messageTagId;
 
-    @JsonProperty(value = "Message_tag_name")
-    @Column(name = "Message_tag_name")
-    private String message_tag_name;
+    @Column(name = "message_tag_name")
+    private String messageTagName;
 
-    @OneToMany(mappedBy = "messageTag")
-    private List<Message> message;
+    // getters and setters
 }

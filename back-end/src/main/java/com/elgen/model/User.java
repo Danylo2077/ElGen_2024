@@ -1,92 +1,75 @@
 package com.elgen.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Getter @Setter
 @Entity
+@JsonIgnoreProperties({"userAccountStatus", "role", "userTag"})
 @Table(name = "user")
-public class User implements Serializable {
-    @Id
-    @JsonProperty(value = "Id")
-    @Column(name = "user_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
-    private Long user_id;
+public class User {
 
-    @JsonProperty(value = "Name")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Long userId;
+
     @Column(name = "name")
-    @Getter @Setter
     private String name;
 
-    @JsonProperty(value = "Last_Name")
     @Column(name = "last_name")
-    @Getter @Setter
-    private String last_name;
+    private String lastName;
 
-    @JsonProperty(value = "Email")
     @Column(name = "email")
-    @Getter @Setter
     private String email;
 
-    @JsonProperty(value = "Password")
     @Column(name = "password")
-    @Getter @Setter
     private String password;
 
-    @JsonProperty(value = "Phone")
     @Column(name = "phone")
-    @Getter @Setter
     private String phone;
 
-    @JsonProperty(value = "Bio")
     @Column(name = "bio")
-    @Getter @Setter
     private String bio;
 
-    @JsonProperty(value = "User_Role")
     @Column(name = "user_role")
-    @Getter @Setter
-    private String user_role;
+    private String userRole;
 
-    @JsonProperty(value = "Last_Login")
+    @Temporal(TemporalType.DATE)
     @Column(name = "last_login")
-    @Getter @Setter
-    private Date last_login;
+    private Date lastLogin;
 
-    @OneToMany(mappedBy = "user")
-    @Getter @Setter
-    private List<UserReaction> userReaction;
+    @Column(name = "user_account_status_id")
+    private Long userAccountStatusId;
 
-    @OneToMany(mappedBy = "user")
-    @Getter @Setter
-    private List<UserGroup> userGroup;
+    @Column(name = "user_role_id")
+    private Long userRoleId;
 
-    @OneToMany(mappedBy = "user")
-    @Getter @Setter
-    private List<Follower> follower;
+    @Column(name = "user_tag_id")
+    private Long userTagId;
 
-    @OneToMany(mappedBy = "user")
-    @Getter @Setter
-    private List<UserChat> userChat;
+    @Column(name = "full_name")
+    private String fullName = name + " " + lastName;
 
     @ManyToOne
-    @JoinColumn(name = "user_account_status_id")
+    @JoinColumn(name = "user_account_status_id", referencedColumnName = "user_account_status_id", insertable = false, updatable = false)
     private UserAccountStatus userAccountStatus;
 
     @ManyToOne
-    @JoinColumn(name = "user_role_id")
-    private UserRole userRole;
+    @JoinColumn(name = "user_role_id", referencedColumnName = "user_role_id", insertable = false, updatable = false)
+    private UserRole role;
 
     @ManyToOne
-    @JoinColumn(name = "user_tag_id")
+    @JoinColumn(name = "user_tag_id", referencedColumnName = "user_tag_id", insertable = false, updatable = false)
     private UserTag userTag;
 
-    private String full_name = name + " " + last_name;
+    // getters and setters
 }

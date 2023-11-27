@@ -16,19 +16,23 @@ import lombok.NoArgsConstructor;
 public class UserReaction {
 
     @Id
-    @JsonProperty(value = "User_reaction_id")
-    @Column(name = "user_reaction_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
-    private Long user_reaction_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_reaction_id")
+    private Long userReactionId;
 
-    @JsonProperty(value = "Reaction_id")
     @Column(name = "reaction_id")
-    @Getter @Setter
-    private Long reaction_id;
+    private Long reactionId;
+
+    @Column(name = "user_id")
+    private Long userId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    @Getter @Setter
+    @JoinColumn(name = "reaction_id", referencedColumnName = "reaction_id", insertable = false, updatable = false)
+    private Reaction reaction;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
     private User user;
+
+    // getters and setters
 }

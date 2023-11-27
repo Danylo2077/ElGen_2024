@@ -14,55 +14,51 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @Table(name = "message")
-public class Message implements Serializable {
+public class Message {
+
     @Id
-    @JsonProperty(value = "Message_id")
-    @Column(name = "message_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long message_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "message_id")
+    private Long messageId;
 
-    @JsonProperty(value = "Message_text")
     @Column(name = "message_text")
-    private String message_text;
+    private String messageText;
 
-    @JsonProperty(value = "Message_from")
     @Column(name = "message_from")
-    private String message_from;
+    private String messageFrom;
 
-    @JsonProperty(value = "Message_date")
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "message_date")
-    private Date message_date;
+    private Date messageDate;
 
-    @JsonProperty(value = "Is_pinned")
     @Column(name = "is_pinned")
-    private Boolean is_pinned;
+    private Boolean isPinned;
 
-    @ManyToOne
-    @JoinColumn(name = "reply_to")
-    private Message reply_to;
+    @Column(name = "reply_to")
+    private Long replyTo;
 
-    @JsonProperty(value = "Is_post")
     @Column(name = "is_post")
-    private Boolean is_post;
+    private Boolean isPost;
 
-    @JsonProperty(value = "Сhat_id")
     @Column(name = "chat_id")
-    private String chat_id;
+    private String chatId;
 
-    @OneToMany(mappedBy = "message")
-    private List<GroupMessage> groupMessage;
+    @Column(name = "message_tag_id")
+    private Long messageTagId;
 
-    @OneToMany(mappedBy = "message")
-    private List<Reaction> reaction;
-
-    @OneToMany(mappedBy = "message")
-    private List<Attachment> attachment;
+    @Column(name = "comment_id")
+    private Long commentId;
 
     @ManyToOne
-    @JoinColumn(name = "message_tag_id")
+    @JoinColumn(name = "comment_id", referencedColumnName = "comment_id", insertable = false, updatable = false)
+    private Comment comment;
+
+    @ManyToOne
+    @JoinColumn(name = "message_tag_id", referencedColumnName = "message_tag_id", insertable = false, updatable = false)
     private MessageTag messageTag;
 
     @ManyToOne
-    @JoinColumn(name = "comment_id")
-    private Comment comment;
+    @JoinColumn(name = "reply_to", referencedColumnName = "message_id", insertable = false, updatable = false)
+    private Message repliedToMessage;
+
 }

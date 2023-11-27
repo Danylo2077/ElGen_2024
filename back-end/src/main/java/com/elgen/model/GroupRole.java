@@ -12,16 +12,16 @@ import lombok.NoArgsConstructor;
 @Data
 @Getter @Setter
 @Entity
-@Table(name="group_role")
+@Table(name = "group_role")
 public class GroupRole {
+
     @Id
-    @JsonProperty(value = "Group_role_id")
-    @Column(name = "group_role_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long group_role_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "group_role_id")
+    private Long groupRoleId;
 
-    @JsonProperty(value = "Group_role_name")
     @Column(name = "group_role_name")
-    private String group_role_name;
+    private String groupRoleName;
 
+    // getters and setters
 }

@@ -15,22 +15,32 @@ import java.util.List;
 @Data
 @Entity
 @Getter @Setter
-@IdClass(FollowerId.class)
 @Table(name = "follower")
 public class Follower {
+
     @Id
-    @JoinColumn(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Long userId;
+
+    @Column(name = "follower_user_id")
+    private Long followerUserId;
+
+    @Column(name = "follow_user_id")
+    private Long followUserId;
+
     @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
     private User user;
 
-    @Id
     @ManyToOne
-    @JoinColumn(name = "follower_user_id")
-    private User follower_user_id;
+    @JoinColumn(name = "follower_user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+    private User followerUser;
 
-    @Id
     @ManyToOne
-    @JoinColumn(name = "follow_user_id")
-    private User follow_user_id;
+    @JoinColumn(name = "follow_user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+    private User followUser;
+
+    // getters and setters
 }
 

@@ -13,15 +13,25 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "group_message")
 public class GroupMessage {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @JoinColumn(name = "group_id")
+    @Column(name = "group_id")
+    private Long groupId;
+
+    @Column(name = "message_id")
+    private Long messageId;
+
     @ManyToOne
+    @JoinColumn(name = "group_id", referencedColumnName = "group_id", insertable = false, updatable = false)
     private Group group;
 
-    @JoinColumn(name = "message_id")
     @ManyToOne
+    @JoinColumn(name = "message_id", referencedColumnName = "message_id", insertable = false, updatable = false)
     private Message message;
+
+    // getters and setters
 }

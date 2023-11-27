@@ -13,32 +13,21 @@ import java.util.List;
 @Entity
 @Table(name = "chat")
 public class Chat {
+
     @Id
-    @JsonProperty(value = "Chat_id")
-    @Column(name = "chat_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
-    private Long chat_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "chat_id")
+    private Long chatId;
 
     @Lob
     @Column(name = "icon")
-    @Getter @Setter
-    private Blob icon;
+    private byte[] icon;
 
-
-    @JsonProperty(value = "Chat_name")
     @Column(name = "chat_name")
-    @Getter @Setter
-    private String chat_name;
+    private String chatName;
 
-    @JsonProperty(value = "Chat_description")
     @Column(name = "chat_description")
-    @Getter @Setter
-    private String chat_description;
-
-    @OneToMany(mappedBy = "chat")
-    private List<UserChat> userChat;
-
+    private String chatDescription;
 
 }
 
