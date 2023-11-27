@@ -18,7 +18,7 @@ import java.util.List;
 @Table(name= "comment")
 public class Comment {
     @Id
-    @JsonProperty(value = "Comment_id")
+    @JsonProperty(value = "comment_id")
     @Column(name = "comment_id", columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long comment_id;

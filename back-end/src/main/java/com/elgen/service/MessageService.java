@@ -36,7 +36,7 @@ public class MessageService {
             existingMessage.setMessage_date(updatedMessage.getMessage_date());
             existingMessage.setIs_pinned(updatedMessage.getIs_pinned());
             existingMessage.setReply_to(updatedMessage.getReply_to());
-            existingMessage.setComment_id(updatedMessage.getComment_id());
+           // existingMessage.setComment_id(updatedMessage.getComment_id());
             existingMessage.setIs_post(updatedMessage.getIs_post());
             existingMessage.setChat_id(updatedMessage.getChat_id());
             // Оновіть інші поля, якщо потрібно
