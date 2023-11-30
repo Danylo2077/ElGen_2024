@@ -18,7 +18,7 @@ public class MessageService {
         return messageRepository.findAll();
     }
 
-    public Message getMessageById(String messageId) {
+    public Message getMessageById(Long messageId) {
         Optional<Message> optionalMessage = messageRepository.findById(messageId);
         return optionalMessage.orElse(null);
     }
@@ -27,27 +27,27 @@ public class MessageService {
         return messageRepository.save(message);
     }
 
-    public Message updateMessage(String messageId, Message updatedMessage) {
-        Optional<Message> optionalMessage = messageRepository.findById(messageId);
-        if (optionalMessage.isPresent()) {
-            Message existingMessage = optionalMessage.get();
-            existingMessage.setMessage_text(updatedMessage.getMessage_text());
-            existingMessage.setMessage_from(updatedMessage.getMessage_from());
-            existingMessage.setMessage_date(updatedMessage.getMessage_date());
-            existingMessage.setIs_pinned(updatedMessage.getIs_pinned());
-            existingMessage.setReply_to(updatedMessage.getReply_to());
-            existingMessage.setComment_id(updatedMessage.getComment_id());
-            existingMessage.setIs_post(updatedMessage.getIs_post());
-            existingMessage.setChat_id(updatedMessage.getChat_id());
-            // Оновіть інші поля, якщо потрібно
-            return messageRepository.save(existingMessage);
-        } else {
-            // Обробка випадку, коли повідомлення не знайдене
-            throw new RuntimeException("Повідомлення з id " + messageId + " не знайдено");
-        }
-    }
+//    public Message updateMessage(String messageId, Message updatedMessage) {
+//        Optional<Message> optionalMessage = messageRepository.findById(messageId);
+//        if (optionalMessage.isPresent()) {
+//            Message existingMessage = optionalMessage.get();
+//            existingMessage.setMessage_text(updatedMessage.getMessage_text());
+//            existingMessage.setMessage_from(updatedMessage.getMessage_from());
+//            existingMessage.setMessage_date(updatedMessage.getMessage_date());
+//            existingMessage.setIs_pinned(updatedMessage.getIs_pinned());
+//            existingMessage.setReply_to(updatedMessage.getReply_to());
+//            existingMessage.setComment_id(updatedMessage.getComment_id());
+//            existingMessage.setIs_post(updatedMessage.getIs_post());
+//            existingMessage.setChat_id(updatedMessage.getChat_id());
+//            // Оновіть інші поля, якщо потрібно
+//            return messageRepository.save(existingMessage);
+//        } else {
+//            // Обробка випадку, коли повідомлення не знайдене
+//            throw new RuntimeException("Повідомлення з id " + messageId + " не знайдено");
+//        }
+//    }
 
-    public void deleteMessage(Long messageId) {
-        messageRepository.deleteById(messageId.toString());
+    public void deleteMessage(Message message) {
+        messageRepository.delete(message);
     }
 }

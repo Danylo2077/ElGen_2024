@@ -26,5 +26,5 @@ public class Comment {
     @Column(name = "parent_comment_id")
     private Long parentCommentId;
 
-    // getters and setters
+
 }

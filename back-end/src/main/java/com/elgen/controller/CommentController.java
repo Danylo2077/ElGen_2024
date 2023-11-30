@@ -3,53 +3,50 @@ package com.elgen.controller;
 import com.elgen.model.Comment;
 import com.elgen.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/comments")
-@Api(description = "API for working with comments")
+@RequestMapping("/comments")
 public class CommentController {
 
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
 
-    @GetMapping
-    @ApiOperation("Get all comments")
-    public ResponseEntity<List<Comment>> getAllComments() {
-        List<Comment> comments = commentService.getAllComments();
-        return ResponseEntity.ok(comments);
+    @Autowired
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
     }
 
-    @GetMapping("/{commentId}")
-    @ApiOperation("Get a specific comment by identifier")
-    public ResponseEntity<Comment> getCommentById(@PathVariable Long commentId) {
-        Comment comment = commentService.getCommentById(commentId);
-        return ResponseEntity.ok(comment);
+    @GetMapping
+    public ResponseEntity<List<Comment>> getAllComments() {
+        List<Comment> comments = commentService.getAllComments();
+        return new ResponseEntity<>(comments, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Comment> getCommentById(@PathVariable("id") Long id) {
+        Comment comment = commentService.getCommentById(id);
+        return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
     @PostMapping
-    @ApiOperation("Create a new comment")
     public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
         Comment createdComment = commentService.createComment(comment);
-        return ResponseEntity.ok(createdComment);
+        return new ResponseEntity<>(createdComment, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{commentId}")
-    @ApiOperation("Update a comment by identifier")
-    public ResponseEntity<Comment> updateComment(@PathVariable Long commentId, @RequestBody Comment updatedComment) {
-        Comment updatedCommentResult = commentService.updateComment(commentId, updatedComment);
-        return ResponseEntity.ok(updatedCommentResult);
+    @PutMapping("/{id}")
+    public ResponseEntity<Comment> updateComment(@PathVariable("id") Long id, @RequestBody Comment comment) {
+        Comment updatedComment = commentService.updateComment(id, comment);
+        return new ResponseEntity<>(updatedComment, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{commentId}")
-    @ApiOperation("Delete a comment by identifier")
-    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
-        commentService.deleteComment(commentId);
-        return ResponseEntity.noContent().build();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteComment(@PathVariable("id") Long id) {
+        commentService.deleteComment(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

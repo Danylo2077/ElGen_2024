@@ -27,7 +27,7 @@ public class MessageController {
 
     @GetMapping("/{messageId}")
     @ApiOperation("Get a specific message by identifier")
-    public ResponseEntity<Message> getMessageById(@PathVariable String messageId) {
+    public ResponseEntity<Message> getMessageById(@PathVariable Long messageId) {
         Message message = messageService.getMessageById(messageId);
         return ResponseEntity.ok(message);
     }
@@ -39,17 +39,17 @@ public class MessageController {
         return ResponseEntity.ok(createdMessage);
     }
 
-    @PutMapping("/{messageId}")
-    @ApiOperation("Update a message by identifier")
-    public ResponseEntity<Message> updateMessage(@PathVariable String messageId, @RequestBody Message updatedMessage) {
-        Message updatedMessageResult = messageService.updateMessage(messageId, updatedMessage);
-        return ResponseEntity.ok(updatedMessageResult);
-    }
+//    @PutMapping("/{messageId}")
+//    @ApiOperation("Update a message by identifier")
+//    public ResponseEntity<Message> updateMessage(@PathVariable String messageId, @RequestBody Message updatedMessage) {
+//        Message updatedMessageResult = messageService.updateMessage(messageId, updatedMessage);
+//        return ResponseEntity.ok(updatedMessageResult);
+//    }
 
     @DeleteMapping("/{messageId}")
     @ApiOperation("Delete a message by identifier")
-    public ResponseEntity<Void> deleteMessage(@PathVariable Long messageId) {
-        messageService.deleteMessage(messageId);
+    public ResponseEntity<Void> deleteMessage(@PathVariable Message message) {
+        messageService.deleteMessage(message);
         return ResponseEntity.noContent().build();
     }
 }
