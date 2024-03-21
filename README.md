@@ -16,9 +16,11 @@ Reboot system to apply changes
 ## Prepare
 
 ```
-git clone git@github.com:Danylo2077/ElGen_2024.git 
+git clone git@github.com:Danylo2077/ElGen_2024.git
 ```
 ```bash
+сd ElGen_2024
+git checkout DevOps
 cat .env.example >> .env
 ```
 
