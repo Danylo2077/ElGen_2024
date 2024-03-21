@@ -18,9 +18,13 @@ Reboot system to apply changes
 ```
 git clone git@github.com:Danylo2077/ElGen_2024.git
 ```
-```bash
+```
 сd ElGen_2024
+```
+```
 git checkout DevOps
+```
+```bash
 cat .env.example >> .env
 ```
 
