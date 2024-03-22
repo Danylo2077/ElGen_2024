@@ -6,13 +6,6 @@ Install Docker[https://docs.docker.com/install/]
 
 How to install Docker on Ubuntu[https://docs.docker.com/engine/install/ubuntu/]
 
-**Create the docker group**
-```
-sudo groupadd docker
-sudo usermod -aG docker $USER
-```
-Reboot system to apply changes
-
 ## Prepare
 
 ```
