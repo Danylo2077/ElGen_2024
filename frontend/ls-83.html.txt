@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TLTLE</title>
+
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src = "https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+
+
+<body>
+
+
+
+
+        <div class = "topbox">
+            <button class = "global">
+                Global
+            </button>
+            <button class = "by_topics">
+                By topics
+            </button>
+            <div class = "follow">
+                <img src="follow_icon.png" class = "follow_icon">
+                <div class = "follow_label">Follow</div>
+            </div>
+            <button class = "add_a_new_post">
+                Add a New Post +
+            </button>
+            <button class = "three_dots">
+                ...
+            </button>
+
+        </div>
+
+
+    <div class = "main_panel">
+        <div class = "main_panel_header">MAIN</div>
+
+        <div class = "home_page_button">
+
+            <img src =  "home_icon.png" class = "home_icon">
+                <div class ="home_page_label">
+                    Home page
+                </div>
+        </div>
+
+        <div class = "profile_button">
+            <img src =  "profile_icon.png" class = "profile_icon">
+            <div class ="profile_label">
+                Profile
+            </div>
+        </div>
+
+        <div class = "messages_button">
+
+            <img src =  "messages_icon.png" class = "messages_icon">
+            <div class ="messages_label">
+                Messages
+            </div>
+
+        </div>
+    </div>
+    <div class="header">
+    ElGen
+    <button class="logout-button">Log Out</button>
+    <img src="favicon.ico" alt="avatar_header_img" class="avatar_header_img">
+</div>
+
+            <div class = "post_body">
+                <img src = "favicon.ico" class = "post_author_avatar">
+                <div class = "post_author_nickname">
+                    Name Surname
+                </div>
+                <div class = "hashtag_1"> #hashtag_1 </div>
+                <div class = "hashtag_2"> #hashtag_2 </div>
+                <div class = "hashtag_3"> #hashtag_3 </div>
+                <div class = "post_desc"> Description </div>
+                <img src = "favicon.ico" class = "post_img">
+                <img src = "like_unliked_icon.png" class = "like_unliked_icon_png">
+                <div class = "like_counter" >0</div>
+                <img src = "repost_icon.png" class = "repost_icon_png">
+                <div class = "repost_counter" >0</div>
+                <img src = "views_icon.png" class = "views_icon_png">
+                <div class = "views_counter" >0</div>
+
+            </div>
+        <div class="sidebox">
+              <div class="sidebox_header">
+                  You might also like:
+              </div>
+                    <div class="sidebox_body">
+                        <div class="you_might_also_like_1">
+                        <img src="favicon.ico" class="sidebox_photo_1">
+                           <div class="you_might_also_like_1_name_surname">
+                               Name Surname
+                           </div>
+                            <button class="you_might_also_like_1_follow-button">Follow</button>
+                        </div>
+                        <div class="you_might_also_like_2">
+                            <img src="favicon.ico" class="sidebox_photo_2">
+                            <div class="you_might_also_like_2_name_surname">
+                                Name Surname
+                            </div>
+                            <button class="you_might_also_like_2_follow-button">Follow</button>
+                        </div>
+                        <div class="you_might_also_like_3">
+                            <img src="favicon.ico" class="sidebox_photo_3">
+                            <div class="you_might_also_like_3_name_surname">
+                                Name Surname
+                            </div>
+                            <button class="you_might_also_like_3_follow-button">Follow</button>
+                        </div>
+                        <div class="you_might_also_like_4">
+                        <img src="favicon.ico" class="sidebox_photo_4">
+                        <div class="you_might_also_like_4_name_surname">
+                            Name Surname
+                        </div>
+                        <button class="you_might_also_like_4_follow-button">Follow</button>
+                    </div>
+
+
+                    </div>
+              <div class="sidebox_footer"> Show more: </div>
+          </div>
+
+
+
+      <script src="js/index.js" type ="text/babel"></script>
+</body>
+</html>
