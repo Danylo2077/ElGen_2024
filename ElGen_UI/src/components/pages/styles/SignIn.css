@@ -1,0 +1,238 @@
+.sign-in {
+position: relative;
+overflow: hidden;
+height: 100vh;
+padding: 14.63rem 0 20.31rem 0;
+background-image: linear-gradient(0deg, #A1D8FFA1 -123%, #30D9D100 -26%, #000000FF 74%),radial-gradient(34% 215% at 70% 75%, #4107FF21 20%, #083EF300 39%),radial-gradient(31% 76% at 49% 85%, #16A4F0FF 14%, #718AFFFF 100%);
+}
+
+.sign-in h1 {
+text-align: center;
+color: #FFF;
+font-family: Karla;
+font-size: 1.75rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.sign-in h2 {
+text-align: center;
+color: rgba(86, 85, 85, 0.83);
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-bottom: 4rem;
+}
+
+.sign-in .input-box {
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+align-items: center;
+flex-flow: column;
+}
+.sign-in input {
+border-color: linear-gradient(rgba(0, 0, 0, 0.4745098039), rgba(73, 134, 253, 0.8196078431));
+padding: 0 0 0 2.5rem;
+color: #868484;
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+border-radius: 2.5625rem;
+border: 2px solid #000;
+background: rgba(0, 0, 0, 0.437);
+background-blend-mode: darken;
+backdrop-filter: blur(5px);
+width: 34.75rem;
+height: 5.8125rem;
+letter-spacing: 0.07rem;
+}
+.sign-in input:nth-child(1) {
+margin-bottom: 1rem;
+}
+.sign-in input:nth-child(2) {
+margin-bottom: 0.7rem;
+}
+
+.sign-in .remember-forgot {
+display: flex;
+width: 29.375rem;
+justify-content: space-between;
+margin-bottom: 0.7rem;
+letter-spacing: 0.05rem;
+}
+
+.sign-in .remember-forgot .remember-forgot-wrapper {
+    display: flex;
+    width: 9rem;
+    justify-content: space-between;
+    position: relative;
+}
+
+.sign-in .remember-forgot div {
+text-decoration: none;
+color: rgba(255, 255, 255, 0.66);
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.07rem;
+cursor: pointer;
+}
+.sign-in .remember-forgot input {
+width: 0.89231rem;
+height: 0.912rem;
+position: absolute;
+bottom: -50%;
+}
+.sign-in .remember-forgot label {
+color: rgba(255, 255, 255, 0.66);
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.07rem;
+}
+
+.sign-in .eye-closed, .eye-opened {
+    background:none;
+    border:none;
+    transform: translateX(29rem) translateY(-4.2rem);
+}
+
+.sign-in .eye-opened {
+    transform: translateX(29rem) translateY(-4.8rem);;
+}
+
+.sign-in .continue-btn {
+border-style: none;
+display: block;
+margin: 0 auto;
+width: 34.75rem;
+height: 5.75rem;
+flex-shrink: 0;
+border-radius: 2.5625rem;
+background: rgba(0, 0, 0, 0.82);
+backdrop-filter: blur(5px);
+color: #FFF;
+font-family: Open Sans;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-bottom: 1rem;
+}
+.sign-in .continue-btn:hover {
+box-shadow: 0 0 0.6rem 0.2rem #3a4a84;
+transition: 0.3s all;
+}
+.sign-in .button:active {
+transform: scale(0.98);
+transition: 0.3s all;
+}
+.sign-in .create-account {
+display: flex;
+justify-content: space-between;
+text-align: center;
+color: #FFF;
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 0.07rem;
+}
+.sign-in .create-account .have-an-account-sign-up {
+display: inline-block;
+text-decoration: none;
+color: #83CBFF;
+font-family: Open Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+letter-spacing: 0.07rem;
+margin-left: 0.3rem;
+}
+.sign-in .create-account div:hover {
+cursor:pointer;
+}
+
+.sign-in .passWrapper {
+    height: 5.8rem;
+    margin-bottom: 1rem;
+}
+
+.sign-in .forgot-pass-window {
+    position: absolute;
+    right: 32%;
+    top: 32%;
+    align-items:center;
+    z-index: 1;
+    display: flex;
+    flex-flow: column;
+    align-items:center;
+    justify-content: center;
+    padding:4.5rem 0 3.2rem 0;
+    width: 42.5rem;
+    height: 32rem;
+    background: rgb(0, 0, 0);
+    border-radius: 5%;
+}
+
+.sign-in .forgot-input { 
+    border-radius: 2.5625rem;
+    background: #272727;
+    width: 32.9375rem;
+    height: 5.375rem;
+}
+
+.sign-in .send-btn {
+    background:none;
+    border:none;
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.025rem;
+    transform: translateX(25rem) translateY(-4.5rem);
+}
+
+.sign-in .email-wrapper {
+    margin-bottom: 1rem ;
+    height: 5.375rem;
+}
+
+.sign-in .forgot-btn {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.025rem;
+    border:none;
+    width: 19.4375rem;
+    height: 5.375rem;
+    flex-shrink: 0;
+    border-radius: 2.5625rem;
+    background: #4767D7;
+}
+
+.sign-in .close {
+    right: 2rem;
+    top: 2rem;
+    position: absolute;
+    display: flex;
+    border: none;
+    background:none;
+    cursor: pointer;
+}

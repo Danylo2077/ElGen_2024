@@ -1,0 +1,171 @@
+
+.user-preferences {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  padding: 1.8rem 0 3.5rem 0;
+  background-image: radial-gradient(37% 73% at 38% 111%, #5B07FFFF -107%, #0D1EFF2E 137%),radial-gradient(10% 34% at 67% 84%, #FEFF07FF -489%, #F2FF0700 140%),radial-gradient(13% 16% at 72% 39%, #833D3D8F -94%, #92454591 -40%, #DA132800 249%),radial-gradient(34% 70% at 88% 103%, #07FF00FF -34%, #070B1B00 135%),linear-gradient(180deg, #000000FF 34%, #98FFFEFF 190%);
+}
+
+.user-preferences .profileWrapper {
+  margin:0 0 0 3.3rem ;
+  display: flex;
+  align-items: center;
+  width: 112.8rem;
+  height: 2.6rem;
+}
+
+.user-preferences .profileIcon {
+  display: inline-block;
+  min-width: 2.7rem;
+  height: 2.7rem;
+  background-color: #B4ACAC;
+  border-radius: 100%;
+  margin-right: 0.7rem;
+}
+.user-preferences .username {
+  color: #AEAEAE;
+  font-size: 1.5625rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.user-preferences p {
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.43);
+  font-family: Open Sans;
+  font-size: 2.0625rem;
+  font-style: normal;
+  font-weight: 300;
+  text-align: center;
+}
+
+.user-preferences h1 {
+color: #FFF;
+text-align: center;
+font-family: Open Sans;
+font-size: 2rem;
+font-style: normal;
+font-weight: 600;
+margin-bottom: 2rem;
+}
+
+.user-preferences h2 {
+color: rgba(255, 255, 255, 0.61);
+font-family: Open Sans;
+font-size: 1.8rem;
+font-style: normal;
+font-weight: 400;
+text-align: center;
+margin-bottom: 2rem;
+}
+
+.user-preferences span {
+color: rgba(255, 255, 255, 0.85);
+font-family: Open Sans;
+font-size: 2.1875rem;
+font-style: normal;
+font-weight: 600;
+}
+
+.user-preferences .mediaScroller {
+display: flex;
+flex-flow: column;
+justify-content: space-between;
+overflow-x:scroll;
+overflow-y: hidden;
+height: 23.25rem;
+margin: 6rem 0 3rem 0;
+}
+
+.user-preferences .mediaScroller::-webkit-scrollbar
+{
+width:0;
+}
+
+.user-preferences .tagRow {
+display: flex;
+justify-content: space-between;
+}
+
+.user-preferences .tagRow:nth-child(2n+1) .tagWrapper:nth-child(1){ 
+  margin-left: 1rem;
+}
+
+.user-preferences .tagWrapper:nth-child(1) {
+  margin-left: 4rem;
+}
+
+
+.user-preferences .tagWrapper {
+margin-right: 1rem;
+display: flex;
+align-items:center;
+justify-content: flex-start;
+padding:0 2.5rem 0 0.6rem;
+min-width: 20.3125rem;
+height: 6.75rem;
+flex-shrink: 0;
+border-radius: 5.5rem;
+border: 2px solid #0C0F24;
+background: rgba(0, 0, 0, 0.35);
+backdrop-filter: blur(5px);
+}
+
+.user-preferences .tagIcon {
+margin-right: 1rem;
+border-radius: 100%;
+width: 5.4375rem;
+height: 5.4375rem;
+flex-shrink: 0;
+background:#fff;
+}
+
+.user-preferences .tagName {
+color: #FFF;
+text-align: center;
+font-family: Open Sans;
+font-size: 1.75rem;
+font-style: normal;
+font-weight: 700;
+}
+
+.user-preferences .skip {
+margin-right: 3.8rem;
+color: #FFF;
+font-family: Open Sans;
+font-size: 2.25rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 0.07rem;
+display: flex;
+justify-content: flex-end;
+position: absolute;
+top: 2.7rem;
+right: 3.8rem;
+}
+
+.user-preferences button {
+align-items:center;
+display: flex;
+justify-content: center;
+width: 22.875rem;
+height: 5.75rem;
+flex-shrink: 0;
+border-radius: 3rem;
+background: rgba(0, 0, 0, 0.516);
+border: none;
+color: rgba(190, 190, 190, 0.733);
+font-family: Open Sans;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+margin: 0 auto;
+}
+
+.user-preferences button:hover {
+transform: scale(1.02);
+box-shadow: 0 0 0.6rem 0.2rem #3961ee;
+transition: 0.3s all;
+}

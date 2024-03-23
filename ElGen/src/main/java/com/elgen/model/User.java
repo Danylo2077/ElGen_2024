@@ -56,8 +56,8 @@ public class User {
     @Column(name = "user_tag_id")
     private Long userTagId;
 
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "full_name")
+    private String fullName = name + " " + lastName;
 
     @ManyToOne
     @JoinColumn(name = "user_account_status_id", referencedColumnName = "user_account_status_id", insertable = false, updatable = false)
@@ -71,4 +71,5 @@ public class User {
     @JoinColumn(name = "user_tag_id", referencedColumnName = "user_tag_id", insertable = false, updatable = false)
     private UserTag userTag;
 
+    // getters and setters
 }

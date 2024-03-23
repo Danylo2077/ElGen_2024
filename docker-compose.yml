@@ -1,6 +1,18 @@
 version: "3.8"
 
 services:
+  ui:
+    build:
+      context: ElGen_UI
+      target: development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./ElGen_UI/src:/code/src
+      - /project/node_modules
+    expose:
+      - 3306
+      - 33060
   mysqldb:
     image: mysql:latest
     restart: unless-stopped
@@ -29,7 +41,7 @@ services:
         "spring.datasource.password": "$MYSQLDB_ROOT_PASSWORD",
         "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL57Dialect",
         "spring.jpa.hibernate.ddl-auto": "update"
-    }'
+      }'
     volumes:
       - .m2:/root/.m2
     stdin_open: true
