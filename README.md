@@ -7,7 +7,7 @@ Install Docker[https://docs.docker.com/install/]
 How to install Docker on Ubuntu[https://docs.docker.com/engine/install/ubuntu/]
 
 ## Prepare
-
+**! If you use windows, do all preparings in Git Bash, or use Windows Powershell with ```bash``` command.**
 ```
 git clone git@github.com:Danylo2077/ElGen_2024.git
 ```
