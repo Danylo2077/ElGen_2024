@@ -57,7 +57,7 @@ public class User {
     private Long userTagId;
 
     @Column(name = "user_name")
-    private Long userName;
+    private String userName;
 
     @ManyToOne
     @JoinColumn(name = "user_account_status_id", referencedColumnName = "user_account_status_id", insertable = false, updatable = false)
