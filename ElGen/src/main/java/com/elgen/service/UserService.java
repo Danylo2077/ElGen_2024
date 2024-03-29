@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class UserService {
@@ -28,6 +29,10 @@ public class UserService {
 
     public List<User> getUsersByName(String name) {
         return userRepository.findByName(name);
+    }
+
+    public List<User> getUsersByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
     public User createUser(User user) {
         return userRepository.save(user);

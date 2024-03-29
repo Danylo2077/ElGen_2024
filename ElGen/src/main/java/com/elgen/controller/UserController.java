@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/users")
 public class UserController {
 
@@ -33,6 +32,12 @@ public class UserController {
     public List<User> getUsersByName(@PathVariable String name) {
         return userService.getUsersByName(name);
     }
+
+    @GetMapping("/email/{email}")
+    public List<User> getUsersByEmail(@PathVariable String email) {
+        return userService.getUsersByEmail(email);
+    }
+
     @PostMapping
     public User createUser(@RequestBody User user) {
         System.out.println("Received request to create user: " + user);
