@@ -101,6 +101,13 @@ CREATE TABLE reaction_type
     CONSTRAINT pk_reaction_type PRIMARY KEY (reaction_type_id)
 );
 
+CREATE TABLE roles
+(
+    id   INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(20) NULL,
+    CONSTRAINT pk_roles PRIMARY KEY (id)
+);
+
 CREATE TABLE user
 (
     user_id                BIGINT AUTO_INCREMENT NOT NULL,
@@ -110,12 +117,11 @@ CREATE TABLE user
     password               VARCHAR(255) NULL,
     phone                  VARCHAR(255) NULL,
     bio                    VARCHAR(255) NULL,
-    user_role              VARCHAR(255) NULL,
     last_login             date NULL,
     user_account_status_id BIGINT NULL,
-    user_role_id           BIGINT NULL,
     user_tag_id            BIGINT NULL,
     user_name              VARCHAR(255) NULL,
+    user_role_id           BIGINT NULL,
     CONSTRAINT pk_user PRIMARY KEY (user_id)
 );
 
@@ -155,6 +161,13 @@ CREATE TABLE user_role
     user_role_id   BIGINT AUTO_INCREMENT NOT NULL,
     user_role_name VARCHAR(255) NULL,
     CONSTRAINT pk_user_role PRIMARY KEY (user_role_id)
+);
+
+CREATE TABLE user_roles
+(
+    role_id INT    NOT NULL,
+    user_id BIGINT NOT NULL,
+    CONSTRAINT pk_user_roles PRIMARY KEY (role_id, user_id)
 );
 
 CREATE TABLE user_tag
@@ -223,3 +236,9 @@ ALTER TABLE user_reaction
 
 ALTER TABLE user_reaction
     ADD CONSTRAINT FK_USER_REACTION_ON_USER FOREIGN KEY (user_id) REFERENCES user (user_id);
+
+ALTER TABLE user_roles
+    ADD CONSTRAINT fk_userol_on_role FOREIGN KEY (role_id) REFERENCES roles (id);
+
+ALTER TABLE user_roles
+    ADD CONSTRAINT fk_userol_on_user FOREIGN KEY (user_id) REFERENCES user (user_id);
