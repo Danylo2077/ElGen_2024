@@ -71,5 +71,4 @@ public class User {
     @JoinColumn(name = "user_tag_id", referencedColumnName = "user_tag_id", insertable = false, updatable = false)
     private UserTag userTag;
 
-    // getters and setters
 }
