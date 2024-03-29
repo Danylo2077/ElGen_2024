@@ -1,5 +1,5 @@
 # ElGen_2024
-##Backend
+## Backend
 **Before you start working**
 1. Clean your DB using ```flyway:clean```
 2. Migrate new migration to your DB using ```flyway:migrate```
