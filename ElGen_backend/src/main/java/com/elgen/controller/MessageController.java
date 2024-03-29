@@ -11,7 +11,6 @@ import io.swagger.annotations.ApiOperation;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/messages")
 @Api(description = "API for working with messages")
 public class MessageController {
