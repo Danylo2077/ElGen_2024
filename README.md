@@ -27,3 +27,19 @@ Run docker containers
 ```
 docker compose up -d
 ```
+## Prepare database
+```bash
+sudo apt-get install mysql-client
+```
+
+```bash
+mysql -u root -p -h 127.0.0.1 -P 3307 ElGen
+```
+
+**password: root**
+
+```sql
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+```
