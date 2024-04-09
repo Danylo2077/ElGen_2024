@@ -3,12 +3,16 @@ import './App.css';
 import SignIn from './components/pages/SignIn';
 import SignUp from './components/pages/SignUp';
 import UserPreferences from './components/pages/UserPreferences'
+import UserPage from "./components/pages/UserPage";
+import MainPage from "./components/pages/MainPage";
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<SignIn/>}/>
+        <Route path='/UserPage' element={<UserPage/>}/>
+      <Route path='/SignIn' element={<SignIn/>}/>
+        <Route path='/MainPage' element={<MainPage/>}/>
       <Route path='/SignUp' element={<SignUp/>}/>
       <Route path='/Preferences' element={<UserPreferences/>}/>  
     </Routes>

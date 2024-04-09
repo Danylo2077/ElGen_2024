@@ -1,0 +1,488 @@
+.user-page {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    padding: 0rem 0 3.5rem 0;
+    background-image: radial-gradient(37% 73% at 38% 111%, #5B07FFFF -107%, #0D1EFF2E 137%),radial-gradient(10% 34% at 67% 84%, #FEFF07FF -489%, #F2FF0700 140%),radial-gradient(13% 16% at 72% 39%, #833D3D8F -94%, #92454591 -40%, #DA132800 249%),radial-gradient(34% 70% at 88% 103%, #07FF00FF -34%, #070B1B00 135%),linear-gradient(180deg, #000000FF 34%, #98FFFEFF 190%);
+}
+
+.usernav {
+    padding: 20px 55px 0 200px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 80px;
+    background-color: black;
+    position: fixed;
+}
+
+.usernav .usernav-btn {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.025rem;
+    border:none;
+    width: 5.4rem;
+    height: 2rem;
+    flex-shrink: 0;
+    border-radius: 0.4rem;
+    background: #4767D7;
+}
+
+.aside {
+    display: flex;
+    justify-content:left;
+    flex-flow: column;
+    padding-top: 150px;
+    padding-left: 25px;
+    padding-right: 15px;
+    position: fixed;
+    height: 100vh;
+    width: 286px;
+    background-color: #000000;
+}
+
+.aside .btn-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    width: 75%;
+    height: 353px;
+}
+
+.aside .nav-container{
+    display: flex;
+    justify-content: center;
+}
+
+.aside .aside-btn {
+    display: flex;
+    justify-content: left;
+    border-style: none;
+    background:none;
+    width: 15rem;
+    height: 3.75rem;
+    flex-shrink: 0;
+    border-radius: 1rem;
+    color: #ffffff;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 2rem;
+    margin-bottom: 0.1rem;
+}
+
+
+
+
+.user-info
+{
+    height: 700px;
+    width: 1500px;
+    background-color: #0C0F24;
+    margin-left: 450px;
+    margin-top: 300px;
+    border-radius: 50px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.user-info-container {
+    height: 150px;
+    width: 1500px;
+    display: flex;
+    position: relative;
+}
+
+.edit-save-buttons {
+    position: absolute;
+    top: 100px;
+
+}
+
+.nav-container a.active {
+    background-color: transparent;
+}
+.user-info-container .username-container #edit-info-btn:hover {
+    background-color: white;
+    color: #0C0F29;
+}
+.user-info-container .username-container #edit-info-btn {
+    position: absolute;
+    margin-left: 990px;
+    margin-top: -60px;
+    width: 100px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #0C0F29;
+    border: 4px solid white;
+    color: white;
+    font-size: 20px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+
+
+
+
+
+.user-info-container .user-info-container-icon
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color:#FFF;
+    margin-right: 10px;
+    margin-left: 80px;
+    margin-top: -80px;
+    box-shadow: -0px -8px 30px #13172a;
+
+}
+
+.user-info-container .username-container .username {
+    flex-shrink: 0;
+    color: #ffffff;
+    font-family: Open Sans;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    position: relative;
+    margin-top: 10px; /* Сдвигаем текст на 10px вниз */
+}
+
+
+.user-info-container .username-container .user-tag
+{
+    flex-shrink: 0;
+    color: #ffffff58;
+    font-family: Open Sans;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    top: 80px;
+}
+
+
+.user-info-container .username-container{
+    display: flex;
+    flex-direction: column;
+
+}
+.user-info-container .username-container .username-input
+{
+    width: auto;
+    height: auto;
+    border-radius: 100px;
+    background-color: #0C0F24;
+    border: 4px solid white;
+    color: white;
+    font-size: 50px;
+    font-family: Open Sans;
+    font-weight: 700;
+    position: relative;
+    padding-left: 15px;
+    top: 10px;
+}
+.user-info-container .username-container .usertag-input
+{
+    width: auto;
+    height: auto;
+    border-radius: 100px;
+    background-color: #0C0F24;
+    border: 3px solid white;
+    color: white;
+    font-family: Open Sans;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 400;
+    position: relative;
+    margin-top: 15px;
+    padding-left: 15px;
+}
+
+
+.recent-posts-container
+{
+    height: 500px;
+    width: 1500px;
+    display: flex;
+    position: relative;
+
+}
+
+.recent-posts-container .recent-posts-1
+{
+    .like-icon {
+        border:none;
+        background:none;
+    }
+
+    .like {
+        border:none;
+        background:none;
+        transform: translateY(-2px);
+    }
+
+    .liked-icon {
+        border:none;
+        background:none;
+    }
+
+    .seen-icon {
+        border:none;
+        background:none;
+        transform: translateY(3px);
+    }
+
+    .share-icon {
+        border:none;
+        background:none;
+    }
+
+    .comment-icon {
+        border:none;
+        background:none;
+    }
+    .post {
+        padding: 30px 30px 30px 30px;
+        margin-top: 50px;
+        position:relative;
+        margin-left: 30px;
+        margin-top: 10px;
+
+        width: 700px;
+        height: 500px;
+        background-color:#000000;
+        border-radius: 1.4rem;
+    }
+    .post .post-body {
+        padding: 30px 30px 30px 30px;
+        width: 100%;
+        height: 320px;
+        background-color:#f3f3f311;
+        border-radius: 1.4rem;
+        margin-bottom: 13px;
+    }
+    .interaction-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items:flex-start;
+        flex-direction: row;
+        width: 400px;
+        height: 40px;
+    }
+    .interaction-subcontainer {
+        display: flex;
+        justify-content: space-around;
+        align-items:flex-start;
+        flex-direction: row;
+        width: 100px;
+    }
+    .interaction-container .like {
+        color: #ffffff;
+        font-family: Open Sans;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-right: 30px;
+    }
+    .usernav-btn {
+        color: #FFF;
+        font-family: Open Sans;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: -0.025rem;
+        border:none;
+        width: 5.4rem;
+        height: 2rem;
+        flex-shrink: 0;
+        border-radius: 0.4rem;
+        background: #4767D7;
+    }
+    .profile-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-shrink: 0;
+        color: #ffffff;
+        font-family: Open Sans;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 30px;
+    }
+    .profile-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        background-color:#FFF;
+        margin-right: 10px;
+    }
+    .user-tag {
+        flex-shrink: 0;
+        color: #ffffff58;
+        font-family: Open Sans;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .username {
+        flex-shrink: 0;
+        color: #ffffff;
+        font-family: Open Sans;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+}
+
+.recent-posts-container .recent-posts-2
+{
+    .like-icon {
+        border:none;
+        background:none;
+    }
+
+    .like {
+        border:none;
+        background:none;
+        transform: translateY(-2px);
+    }
+
+    .liked-icon {
+        border:none;
+        background:none;
+    }
+
+    .seen-icon {
+        border:none;
+        background:none;
+        transform: translateY(3px);
+    }
+
+    .share-icon {
+        border:none;
+        background:none;
+    }
+
+    .comment-icon {
+        border:none;
+        background:none;
+    }
+    .post {
+        padding: 30px 30px 30px 30px;
+        margin-top: 50px;
+        position:absolute;
+        margin-left: 30px;
+        margin-top: 10px;
+
+        width: 700px;
+        height: 500px;
+        background-color:#000000;
+        border-radius: 1.4rem;
+    }
+    .post .post-body {
+        padding: 30px 30px 30px 30px;
+        width: 100%;
+        height: 320px;
+        background-color:#f3f3f311;
+        border-radius: 1.4rem;
+        margin-bottom: 13px;
+    }
+    .interaction-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items:flex-start;
+        flex-direction: row;
+        width: 400px;
+        height: 40px;
+    }
+    .interaction-subcontainer {
+        display: flex;
+        justify-content: space-around;
+        align-items:flex-start;
+        flex-direction: row;
+        width: 100px;
+    }
+    .interaction-container .like {
+        color: #ffffff;
+        font-family: Open Sans;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-right: 30px;
+    }
+    .usernav-btn {
+        color: #FFF;
+        font-family: Open Sans;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: -0.025rem;
+        border:none;
+        width: 5.4rem;
+        height: 2rem;
+        flex-shrink: 0;
+        border-radius: 0.4rem;
+        background: #4767D7;
+    }
+    .profile-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-shrink: 0;
+        color: #ffffff;
+        font-family: Open Sans;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 30px;
+    }
+    .profile-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        background-color:#FFF;
+        margin-right: 10px;
+    }
+    .user-tag {
+        flex-shrink: 0;
+        color: #ffffff58;
+        font-family: Open Sans;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .username {
+        flex-shrink: 0;
+        color: #ffffff;
+        font-family: Open Sans;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+}

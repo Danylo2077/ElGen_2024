@@ -52,6 +52,15 @@ height: 5.8125rem;
 margin-bottom: 1rem;
 }
 
+.error-message {
+        font-family: Open Sans; /* Замените 'Sans' на имя вашего шрифта */
+        font-size: 1.2rem; /* Измените размер текста по вашему желанию */
+        color: #ef220c;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #13172a, 1px -1px 0 #13172a, -1px 1px 0 #13172a, 1px 1px 0 #13172a; /* Создание черной акантовки */
+;
+}
+
 .sign-up .log-in {
 display: flex;
 justify-content: space-between;

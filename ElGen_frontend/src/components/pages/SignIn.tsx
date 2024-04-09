@@ -10,38 +10,35 @@ import EyeClosed from '../../assets/EyeClosed';
 import EyeOpened from '../../assets/EyeOpened';
 import { Link, Route, Routes } from 'react-router-dom';
 
-const SignIn = () => {
 
-    const [email, setUsername] = useState('');
+const SignIn = () => {
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [loginAttempts, setLoginAttempts] = useState(0);
+
     const handleSignIn = () => {
-        // Отправляем GET-запрос на сервер, чтобы получить пароль по email
-        fetch(`http://localhost:6868/users/email/${email}`)
+        const token = localStorage.getItem('token');
+        console.log("token "+token);
+        fetch('http://localhost:6868/api/auth/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Failed to fetch password');
+                    throw new Error('Failed to login');
                 }
                 return response.json();
             })
             .then(data => {
-                const correctPassword = data[0].password;
-                if (password === correctPassword) {
-                    // Сбросить счетчик при успешном входе
-                    setLoginAttempts(0);
-                    alert('Вход выполнен успешно');
-                } else {
-                    // Увеличить счетчик при неправильном вводе пароля
-                    setLoginAttempts(prevAttempts => {
-                        alert(`Неверный пароль.`);
-                        // alert(`Неверный пароль. Попытка: ${prevAttempts + 1}`);
-                        return prevAttempts + 1;
-                    });
-                }
+                localStorage.setItem('token', data.token);
+                // Перенаправляем на другую страницу
+                window.location.href = '/MainPage';
             })
             .catch(error => {
                 console.error('Ошибка:', error);
-                alert('Произошла ошибка при входе');
+                alert(error);
             });
     };
 
