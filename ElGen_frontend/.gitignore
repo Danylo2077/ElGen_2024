@@ -1,0 +1,36 @@
+# Dependencies
+/node_modules
+node_modules/
+
+
+# Build files
+/build
+/dist
+
+# Compiled files
+*.log
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# WebStorm files
+.idea/
+
+# Visual Studio Code files
+.vscode/
+
+# Other IDE-specific files
+*.iml        # IntelliJ IDEA
+*.ipr        # IntelliJ IDEA
+*.iws        # IntelliJ IDEA
+*.idea/workspace.xml     # IntelliJ IDEA
+*.idea/tasks.xml         # IntelliJ IDEA
+*.idea/dictionaries     # IntelliJ IDEA
+*.idea/.name    # IntelliJ IDEA
+*.idea/vcs.xml    # IntelliJ IDEA
+*.idea/jsLibraryMappings.xml    # IntelliJ IDEA
+*.idea/jsLibraryMappings.xml    # IntelliJ IDEA
+*.idea_modules/   # IntelliJ IDEA
