@@ -6,7 +6,7 @@ import UserPreferences from './components/pages/UserPreferences'
 import UserPage from "./components/pages/UserPage";
 import MainPage from "./components/pages/MainPage";
 import { Route, Routes } from 'react-router-dom'
-
+//check
 function App() {
   return (
     <Routes>
