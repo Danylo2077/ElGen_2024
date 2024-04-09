@@ -2,6 +2,12 @@
 /node_modules
 node_modules/
 
+#Sonarqube
+.scannerwork
+sonarqube/extensions
+sonarqube/data
+sonarqube/logs
+
 
 # Build files
 /build
