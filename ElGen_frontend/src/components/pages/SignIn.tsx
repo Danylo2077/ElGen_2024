@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../atoms/Header';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
@@ -9,12 +10,13 @@ import PasswordInput from '../moleculs/PasswordInput';
 import EyeClosed from '../../assets/EyeClosed';
 import EyeOpened from '../../assets/EyeOpened';
 import { Link, Route, Routes } from 'react-router-dom';
+import {saveTokenToLocalStorage} from "../../scripts/SaveToken";
 
 
 const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    const navigate = useNavigate();
     const handleSignIn = () => {
         const token = localStorage.getItem('token');
         console.log("token "+token);
@@ -32,9 +34,12 @@ const SignIn = () => {
                 return response.json();
             })
             .then(data => {
-                localStorage.setItem('token', data.token);
+                console.log('Received data:', data);
+                localStorage.setItem('token', data.accessToken);
+                saveTokenToLocalStorage(data.accessToken);
                 // Перенаправляем на другую страницу
-                window.location.href = '/MainPage';
+               window.location.href = '/MainPage';
+               //  navigate(`/userinfo/${username}`);
             })
             .catch(error => {
                 console.error('Ошибка:', error);
