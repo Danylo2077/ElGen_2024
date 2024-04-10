@@ -34,6 +34,10 @@ public class UserService {
     public List<User> getUsersByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    public Optional<User> getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
     public User createUser(User user) {
         return userRepository.save(user);
     }
