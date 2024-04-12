@@ -22,7 +22,7 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
 
 
     const token = localStorage.getItem('token');
-    console.log("token "+token);
+    // console.log("token "+token);
     const [userTag, setUserTag] = useState<string>(localStorage.getItem('username') || '');
 
     const [isEditing, setIsEditing] = useState(false);
@@ -32,7 +32,7 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
 
     useEffect(() => {
         oldUserTag.current = userTag;
-        oldUsername.current=username;
+
         // console.log("oldusertag.current "+oldUserTag.current);
         fetch(`http://localhost:6868/api/user/get/name/${oldUserTag.current}`, {
             method: 'GET',
@@ -49,6 +49,8 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
                 if (data && data.name) {
                     console.log(data.name);
                     setUsername(data.name);
+                    oldUsername.current=data.name;
+                    console.log("oldUsername.current" ,oldUsername.current);
                 } else {
                     console.log("get dont received data");
                     setUsername('You have no Name yet :(');
@@ -61,27 +63,34 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
 
     const updateName = () => {
         console.log("username ", username);
-        return fetch(`http://localhost:6868/api/user/put/name/${oldUserTag.current}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ name: username })
-        })
-            .then(() => {
-                console.log('Name updated successfully with ', username);
+        console.log("oldUsername.current ", oldUsername.current);
+        if(username!==oldUsername.current)
+        {
+            return fetch(`http://localhost:6868/api/user/put/name/${oldUserTag.current}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({name: username})
             })
-            .catch(error => {
-                console.error('Error updating name:', error);
-            });
+                .then(() => {
+                    console.log('Name updated successfully with ', username);
+                })
+                .catch(error => {
+                    console.error('Error updating name:', error);
+                });
+        }
+        else
+            console.log("username===oldUserTag.current",username===oldUsername.current) ;
     };
 
     const updateUsername = () =>
     {
-        console.log("userTag ", userTag);
-        console.log("oldUserTag.current ", oldUserTag.current);
-        if (userTag !== oldUserTag.current) {
+        // console.log("userTag ", userTag);
+        // console.log("oldUserTag.current ", oldUserTag.current);
+        if (userTag !== oldUserTag.current)
+        {
             fetch(`http://localhost:6868/api/user/put/username/${oldUserTag.current}`, {
                 method: 'PUT',
                 headers: {
@@ -100,7 +109,8 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
                     console.error('Error updating username:', error);
                 });
         }
-        ;
+        else
+            console.log("console.log(userTag == oldUserTag.current)",userTag == oldUserTag.current) ;
     }
 
 
@@ -117,34 +127,34 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
 
     const handleEdit = () => {
         setIsEditing(true);
-        console.log("handleEdit");
+        // console.log("handleEdit");
         console.log("oldUsername "+oldUsername.current);
-        console.log("TOKEN: " + token);
+        // console.log("TOKEN: " + token);
     };
 
     const handleSave = async () => {
         setIsEditing(false);
-        console.log("handleSave");
-        console.log(`http://localhost:6868/api/user/put/name/${oldUserTag.current}`);
+        // console.log("handleSave");
+        // console.log(`http://localhost:6868/api/user/put/name/${oldUserTag.current}`);
 
         await updateName(); // Ждем, пока обновление имени завершится
         updateUsername(); // Запускаем обновление имени пользователя
         oldUsername.current = username || '';
         oldUserTag.current = userTag;
-        console.log("handleSave done");
+        // console.log("handleSave done");
     };
 
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         setUsername(e.target.value);
-        console.log("handleUsernameChange. oldUsername: " + oldUsername.current);
+        // console.log("handleUsernameChange. oldUsername: " + oldUsername.current);
     };
 
     const handleUserTagChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         setUserTag(e.target.value);
-        console.log("handleUserTagChange. oldUserTag: " + oldUserTag.current);
+        // console.log("handleUserTagChange. oldUserTag: " + oldUserTag.current);
     };
 
 
