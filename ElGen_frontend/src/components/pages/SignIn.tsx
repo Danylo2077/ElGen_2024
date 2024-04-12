@@ -35,7 +35,10 @@ const SignIn = () => {
             })
             .then(data => {
                 console.log('Received data:', data);
+
+                localStorage.setItem('username', data.username);
                 localStorage.setItem('token', data.accessToken);
+                console.log("token "+token);
                 saveTokenToLocalStorage(data.accessToken);
                 // Перенаправляем на другую страницу
                window.location.href = '/MainPage';
@@ -59,7 +62,7 @@ const SignIn = () => {
         <div className='sign-in'>
             <Header header='Welcome Back!' subheader='Please sign up your account' />
             <form action='' className='input-box'>
-                <Input type='username' placeholder='E-mail' inputName='text-input' id='username' onChange={handleUsernameChange} />
+                <Input type='username' placeholder='Username' inputName='text-input' id='username' onChange={handleUsernameChange} />
                 <PasswordInput autoComplete='on' placeholder='Password' inputName='text-input' type='password' id='password-input' onChange={handlePasswordChange} />
 
 

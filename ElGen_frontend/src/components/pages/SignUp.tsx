@@ -45,11 +45,13 @@ const SignUp = () => {
     const handleSignUpButtonClick = () =>
     {
         const usernameInput = document.getElementById("username") as HTMLInputElement;
+       // const nameInput = document.getElementById("name") as HTMLInputElement;
         const emailInput = document.getElementById("email") as HTMLInputElement;
         const passwordInput = document.getElementById("password-input") as HTMLInputElement;
         const passwordConfirmInput = document.getElementById("password-confirm") as HTMLInputElement;
 
         const usernameValue = usernameInput.value;
+        //const nameValue = nameInput.value;
         const emailValue = emailInput.value;
         const passwordValue = passwordInput.value;
         const passwordConfirmValue = passwordConfirmInput.value;
@@ -63,8 +65,9 @@ const SignUp = () => {
 
         const userData = {
             username: usernameValue,
-            email: emailValue,
-            password: passwordValue
+            //name: nameValue,
+            password: passwordValue,
+            email: emailValue
         };
         fetch('http://localhost:6868/api/auth/signup', {
             method: 'POST',
@@ -84,40 +87,15 @@ const SignUp = () => {
                 alert('Пользователь успешно создан');
                 console.log(data);
                 localStorage.setItem('token', data.token);
+
                 console.log("token "+data.token);
-               // window.location.href = '/MainPage';
+               window.location.href = '/SignIn';
                 // Дополнительные действия после успешного создания пользователя
             })
             .catch(error => {
                 console.error('Ошибка:', error);
                 alert('Произошла ошибка при создании пользователя');
             });
-
-
-
-
-        // const userData = {
-        //     userName: usernameValue,
-        //     email: emailValue,
-        //     password: passwordValue
-        // };
-        // // console.log("user data"+usernameValue+emailValue+passwordValue)
-        // fetch('http://localhost:6868/users', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(userData)
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log('Успех:', data);
-        //         // Дополнительные действия после успешной отправки запроса
-        //     })
-        //     .catch((error) => {
-        //         console.error('Ошибка:', error);
-        //         alert(error);
-        //     });
     };
 
 
@@ -129,7 +107,8 @@ const SignUp = () => {
             <Header header='Welcome Back!' subheader='Please sign in to your account'/>
             <form className='input-box' onSubmit={(e) => e.preventDefault()}>
                 <Input type='username' placeholder='@Username' inputName='text-input' id='username'/>
-                <Input type='email' placeholder='University Email Address' inputName='text-input' id='email'/>
+                {/*<Input type='name' placeholder='Enter your Name and Surname' inputName='text-input' id='name'/>*/}
+                <Input type='email' placeholder='Enter your e-mail address' inputName='text-input' id='email'/>
 
                 <PasswordInput autoComplete='on' placeholder='Password' type='password' inputName='text-input' id='password-input' onChange={handlePasswordInputChange}/>
                 {/*{!passwordCorrect && <div className="error-message">Пароль должен содержать как минимум одну букву нижнего регистра, одну букву верхнего регистра, одну цифру и быть длиной не менее 8 символов</div>} /!* Отображаем сообщение об ошибке, если пароли не совпадают *!/*/}

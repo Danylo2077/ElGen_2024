@@ -7,49 +7,111 @@ import Button from '../atoms/Button';
 import {saveTokenToLocalStorage} from "../../scripts/SaveToken";
 
 import axios from 'axios';
+import {wait} from "@testing-library/user-event/dist/utils";
 
 
 interface userInfoProps {
     username?: string;
     userTag?: string;
+    name?: string;
 }
 const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
 
 
+
+
+
     const token = localStorage.getItem('token');
-    // const { username } = useParams<{ username: string }>();
-    const [username, setUsername] = useState('YELISEI');
-    //const [usernameState, setUsername] = useState(username || '');
-    const [userTag, setUserTag] = useState('tester123');
+    console.log("token "+token);
+    const [userTag, setUserTag] = useState<string>(localStorage.getItem('username') || '');
+
     const [isEditing, setIsEditing] = useState(false);
-    const oldUsername = useRef<string>(username || '');
-    const oldUserTag = useRef<string>(userTag);
+    const [username, setUsername] = useState('You have no Name yet :(');
+    const oldUsername = useRef<string>('');
+    const oldUserTag = useRef<string>('');
 
-    // useEffect(() => {
-    //     // Робимо запит до сервера при завантаженні компоненту
-    //     axios.get(`http://localhost:6868/api/user/get/name/${username}`) // Припустимо, що це URL, за яким слухає сервер
-    //         .then(response => {
-    //             const userData = response.data;
-    //             setUsername(userData.name);
-    //             setUserTag(userData.username);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching user data:', error);
-    //         });
-    // }, []);
+    useEffect(() => {
+        oldUserTag.current = userTag;
+        oldUsername.current=username;
+        // console.log("oldusertag.current "+oldUserTag.current);
+        fetch(`http://localhost:6868/api/user/get/name/${oldUserTag.current}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
 
-    // useEffect(() => {
-    //     // Робимо запит до сервера при завантаженні компоненту
-    //     axios.get(`http://localhost:6868/api/user/get/name/${username}`) // Припустимо, що це URL, за яким слухає сервер
-    //         .then(response => {
-    //             const userData = response.data;
-    //             setUsername(userData.name);
-    //             setUserTag(userData.username);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching user data:', error);
-    //         });
-    // }, []);
+            .then(response => response.json())
+
+            .then(data => {
+                // console.log("get received ",data);
+                if (data && data.name) {
+                    console.log(data.name);
+                    setUsername(data.name);
+                } else {
+                    console.log("get dont received data");
+                    setUsername('You have no Name yet :(');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    },[]);
+
+    const updateName = () => {
+        console.log("username ", username);
+        return fetch(`http://localhost:6868/api/user/put/name/${oldUserTag.current}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ name: username })
+        })
+            .then(() => {
+                console.log('Name updated successfully with ', username);
+            })
+            .catch(error => {
+                console.error('Error updating name:', error);
+            });
+    };
+
+    const updateUsername = () =>
+    {
+        console.log("userTag ", userTag);
+        console.log("oldUserTag.current ", oldUserTag.current);
+        if (userTag !== oldUserTag.current) {
+            fetch(`http://localhost:6868/api/user/put/username/${oldUserTag.current}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({username: userTag})
+            })
+                .then(() => {
+                    console.log('Username updated successfully with ' + userTag);
+                    localStorage.removeItem('token');
+                    alert("After change of username you need to sign in again");
+                    window.location.href = '/SignIn';
+                })
+                .catch(error => {
+                    console.error('Error updating username:', error);
+                });
+        }
+        ;
+    }
+
+
+
+
+
+
+
+
+    // const oldUsername = useRef<string>(username || '');
+
 
 
 
@@ -60,51 +122,18 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
         console.log("TOKEN: " + token);
     };
 
-    const handleSave = () => {
+    const handleSave = async () => {
         setIsEditing(false);
         console.log("handleSave");
-        console.log('http://localhost:6868/api/user/put/name/${oldUsername.current}');
-        console.log(`http://localhost:6868/api/user/put/name/${oldUsername.current}`);
-        console.log({name: username});
-        console.log(`Bearer ${token}`);
+        console.log(`http://localhost:6868/api/user/put/name/${oldUserTag.current}`);
 
+        await updateName(); // Ждем, пока обновление имени завершится
+        updateUsername(); // Запускаем обновление имени пользователя
+        oldUsername.current = username || '';
+        oldUserTag.current = userTag;
+        console.log("handleSave done");
+    };
 
-        fetch(`http://localhost:6868/api/user/put/name/YELISEI`, {
-            method: 'PUT',
-            headers: {
-                // 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ name: username })
-
-        })
-
-            .then(() => {
-                console.log('Name updated successfully');
-            })
-            .catch(error => {
-                console.error('Error updating name:', error);
-                console.log('TOKEN: ' + token);
-            });
-
-        // Отправка PUT-запроса для обновления юзернейма
-    //     axios.put(`http://localhost:6868/api/user/put/username/${oldUserTag.current}`, { username: userTag },
-    //         {
-    //             headers: {
-    //         'Authorization': `Bearer ${token}`
-    //         }
-    //         })
-    //         .then(() => {
-    //             console.log('Username updated successfully');
-    //         })
-    //         .catch(error => {
-    //             console.error('Error updating username:', error);
-    //         });
-    //
-    //     oldUsername.current = username || '';
-    //
-    //     oldUserTag.current = userTag;
-     };
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -133,7 +162,8 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
 
                     )}
                     {isEditing ? (
-                        <input type="text" value={userTag} onChange={handleUserTagChange} className="usertag-input"/>
+                        <input type="text" value={userTag || ''} onChange={handleUserTagChange}
+                               className="usertag-input"/>
                     ) : (
                         <Link text={"@" + userTag} className="user-tag"/>
                     )}

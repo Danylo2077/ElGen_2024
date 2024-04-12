@@ -5,7 +5,9 @@ import UserInfo from "../organism/UserInfo"
 import './styles/UserPage.css';
 
 const UserPage = () => {
+    const token = localStorage.getItem('token');
 
+    // console.log("token "+token);
     return (
         <div className="user-page">
             <UserNav/>
