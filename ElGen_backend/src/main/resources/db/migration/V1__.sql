@@ -84,6 +84,20 @@ CREATE TABLE message_tag
     CONSTRAINT pk_message_tag PRIMARY KEY (message_tag_id)
 );
 
+CREATE TABLE message_tag_mapping
+(
+    post_id BIGINT NOT NULL,
+    tag_id  BIGINT NOT NULL
+);
+
+CREATE TABLE post
+(
+    post_id BIGINT AUTO_INCREMENT NOT NULL,
+    text    VARCHAR(255) NULL,
+    images  VARCHAR(255) NULL,
+    CONSTRAINT pk_post PRIMARY KEY (post_id)
+);
+
 CREATE TABLE reaction
 (
     reaction_id      BIGINT AUTO_INCREMENT NOT NULL,
@@ -236,6 +250,12 @@ ALTER TABLE user_reaction
 
 ALTER TABLE user_reaction
     ADD CONSTRAINT FK_USER_REACTION_ON_USER FOREIGN KEY (user_id) REFERENCES user (user_id);
+
+ALTER TABLE message_tag_mapping
+    ADD CONSTRAINT fk_mestagmap_on_message_tag FOREIGN KEY (tag_id) REFERENCES message_tag (message_tag_id);
+
+ALTER TABLE message_tag_mapping
+    ADD CONSTRAINT fk_mestagmap_on_post FOREIGN KEY (post_id) REFERENCES post (post_id);
 
 ALTER TABLE user_roles
     ADD CONSTRAINT fk_userol_on_role FOREIGN KEY (role_id) REFERENCES roles (id);
