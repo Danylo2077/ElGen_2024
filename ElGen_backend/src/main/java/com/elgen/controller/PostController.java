@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -63,10 +64,27 @@ public class PostController {
         Post post = postOptional.get();
         post.setText(updatedPost.getText());
         post.setImages(updatedPost.getImages());
-        post.setTags(updatedPost.getTags());
+
+        List<MessageTag> updatedTags = updatedPost.getTags();
+        List<MessageTag> savedTags = new ArrayList<>();
+
+        for (MessageTag tag : updatedTags) {
+            // Проверяем, сохранен ли тег в базе данных
+            if (tag.getMessageTagId() == null) {
+                // Если тег еще не сохранен, сохраняем его
+                savedTags.add(tagRepository.save(tag));
+            } else {
+                // Если тег уже сохранен, используем его существующий идентификатор
+                savedTags.add(tag);
+            }
+        }
+
+        post.setTags(savedTags);
+
         Post savedPost = postRepository.save(post);
         return ResponseEntity.ok(savedPost);
     }
+
 
     // Делит запрос на удаление поста
     @DeleteMapping("/{postId}")
