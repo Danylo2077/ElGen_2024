@@ -8,6 +8,9 @@ import {saveTokenToLocalStorage} from "../../scripts/SaveToken";
 
 import axios from 'axios';
 import {wait} from "@testing-library/user-event/dist/utils";
+import EditProfileModal from "./SettingsModal";
+import UserInfoHandling from './UserInfoHandling';
+
 
 
 interface userInfoProps {
@@ -30,11 +33,16 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
     const oldUsername = useRef<string>('');
     const oldUserTag = useRef<string>('');
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+
+
     useEffect(() => {
         oldUserTag.current = userTag;
-
-        // console.log("oldusertag.current "+oldUserTag.current);
-        fetch(`http://localhost:6868/api/user/get/name/${oldUserTag.current}`, {
+        console.log(token);
+        console.log("oldusertag.current "+oldUserTag.current);
+        fetch(`http://localhost:6868/api/user/get/username/${oldUserTag.current}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,20 +53,23 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
             .then(response => response.json())
 
             .then(data => {
-                // console.log("get received ",data);
+                console.log("get received ",data);
                 if (data && data.name) {
-                    console.log(data.name);
+                    console.log("data.name", data.name);
                     setUsername(data.name);
                     oldUsername.current=data.name;
+                    localStorage.setItem("name", data.name);
                     console.log("oldUsername.current" ,oldUsername.current);
                 } else {
                     console.log("get dont received data");
                     setUsername('You have no Name yet :(');
+
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
             });
+
     },[]);
 
     const updateName = () => {
@@ -114,17 +125,6 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
     }
 
 
-
-
-
-
-
-
-    // const oldUsername = useRef<string>(username || '');
-
-
-
-
     const handleEdit = () => {
         setIsEditing(true);
         // console.log("handleEdit");
@@ -141,6 +141,8 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
         updateUsername(); // Запускаем обновление имени пользователя
         oldUsername.current = username || '';
         oldUserTag.current = userTag;
+        const processedTag = UserInfoHandling(oldUserTag);
+        console.log(processedTag);
         // console.log("handleSave done");
     };
 
@@ -155,6 +157,16 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
 
         setUserTag(e.target.value);
         // console.log("handleUserTagChange. oldUserTag: " + oldUserTag.current);
+    };
+
+
+
+    const handleSettingsButtonClick = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
     };
 
 
@@ -186,6 +198,17 @@ const UserInfo: React.FC<userInfoProps> = (props: userInfoProps) => {
                             <Button text="Edit" id="edit-info-btn" btnName="edit-info-btn" onClick={handleEdit}/>
                         )}
                     </div>
+                    <div className="open-modal-button">
+
+                    <Button text="Show more" id="settings-btn" btnName="settings-btn" onClick={handleSettingsButtonClick}/>
+                    {isModalOpen && (
+                        <EditProfileModal
+                            isOpen={isModalOpen}
+                            onClose={handleCloseModal}
+                        />
+                    )}
+                    </div>
+
                 </div>
 
 

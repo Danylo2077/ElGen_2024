@@ -6,6 +6,9 @@
     background-image: radial-gradient(37% 73% at 38% 111%, #5B07FFFF -107%, #0D1EFF2E 137%),radial-gradient(10% 34% at 67% 84%, #FEFF07FF -489%, #F2FF0700 140%),radial-gradient(13% 16% at 72% 39%, #833D3D8F -94%, #92454591 -40%, #DA132800 249%),radial-gradient(34% 70% at 88% 103%, #07FF00FF -34%, #070B1B00 135%),linear-gradient(180deg, #000000FF 34%, #98FFFEFF 190%);
 }
 
+
+
+
 .usernav {
     padding: 20px 55px 0 200px;
     display: flex;
@@ -78,6 +81,28 @@
     margin-bottom: 0.1rem;
 }
 
+
+#settings-btn:hover {
+    background-color: white;
+    color: #0C0F29;
+}
+#settings-btn
+{
+    position: absolute;
+    margin-left: -150px;
+    margin-top:20px;
+    width: 80px;
+    height: 25px;
+    border-radius: 100px;
+    background-color: #0C0F29;
+    border: 4px solid white;
+    color: white;
+    font-size: 10px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 650;
+    cursor: pointer;
+}
 
 
 
@@ -225,6 +250,7 @@
 
 .recent-posts-container .recent-posts-1
 {
+    z-index: 1;
     .like-icon {
         border:none;
         background:none;
@@ -357,6 +383,7 @@
 
 .recent-posts-container .recent-posts-2
 {
+    z-index: 2;
     .like-icon {
         border:none;
         background:none;
@@ -391,7 +418,7 @@
     .post {
         padding: 30px 30px 30px 30px;
         margin-top: 50px;
-        position:absolute;
+        position:relative;
         margin-left: 30px;
         margin-top: 10px;
 

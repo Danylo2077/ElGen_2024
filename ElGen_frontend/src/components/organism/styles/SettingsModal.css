@@ -1,0 +1,87 @@
+.modal-content {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+    height: auto;
+    width: 500px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #1e1854;
+    margin-bottom: 1000px;
+    border-radius: 10px;
+    z-index: 9999;
+    border-color: #999999;
+    border-width: thick;
+    box-shadow: 0 0 20px 10px rgb(73, 78, 143);
+    color: white;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    padding-left: 10px;
+
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    white-space: nowrap;
+}
+
+
+.close {
+    position: absolute;
+    top: 10px; /* Отступ от верхнего края */
+    right: 10px; /* Отступ от правого края */
+    font-size: 24px; /* Увеличьте размер иконки */
+    cursor: pointer; /* Добавьте курсор указывающий на кнопку */
+    color: white; /* Цвет иконки */
+    margin-bottom: 1px;
+}
+
+.write-here {
+    width: 300px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #0C0F24;
+    border: 4px solid white;
+    color: white;
+    font-size: 20px;
+    font-family: Open Sans;
+    font-weight: 700;
+    position: relative;
+    padding-left: 10px;
+    padding-bottom: 4px;
+    margin-bottom: 30px;
+    margin-right: 0px;
+    display: inline-block; /* Добавляем это свойство */
+}
+
+
+#modal-save-btn
+{
+    width: 100px;
+    height: 30px;
+    border-radius: 100px;
+    background-color: #0C0F29;
+    border: 3px solid white;
+    color: white;
+    font-size: 17px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 650;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: -20px;
+}
+#modal-save-btn:hover {
+    background-color: white;
+    color: #0C0F29;
+}
+
+.input {
+
+}

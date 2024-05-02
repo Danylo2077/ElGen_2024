@@ -1,0 +1,49 @@
+.aside {
+    display: flex;
+    justify-content:left;
+    flex-flow: column;
+    padding-top: 150px;
+    padding-left: 25px;
+    padding-right: 15px;
+    position: fixed;
+    height: 100vh;
+    width: 286px;
+    background-color: #000000;
+}
+
+.aside .btn-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    width: 75%;
+    height: 353px;
+}
+
+.aside .nav-container{
+    display: flex;
+    justify-content: center;
+}
+
+.aside .aside-btn {
+    display: flex;
+    justify-content: left;
+    border-style: none;
+    background:none;
+    width: 15rem;
+    height: 3.75rem;
+    flex-shrink: 0;
+    border-radius: 1rem;
+    color: #ffffff;
+    font-family: Open Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 2rem;
+    margin-bottom: 0.1rem;
+}
+.aside #aside-btn-settings
+{
+
+}

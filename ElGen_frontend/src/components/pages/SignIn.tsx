@@ -17,6 +17,41 @@ const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
+    const sendLastLogin = () => {
+        const token = localStorage.getItem('token');
+        const username = localStorage.getItem('username');
+        const currentDate = new Date();
+
+        // Получите дату и время отдельно
+        // const date = currentDate.toISOString().split('T')[0]; // Получите дату в формате 'YYYY-MM-DD'
+        // const time = currentDate.toISOString().split('T')[1].split('.')[0]; // Получите время в формате 'HH:MM:SS'
+
+        // Объедините дату и время вместе
+        // const lastLogin = `${date}T${time}`;
+        const lastLogin = currentDate.toISOString();
+        console.log(lastLogin);
+
+        fetch(`http://localhost:6868/api/user/put/lastlogin/${username}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ lastLogin }) // Отправьте дату и время последнего входа
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to send last login time');
+                }
+                console.log('Last login time sent successfully', lastLogin);
+            })
+            .catch(error => {
+                console.error('Error sending last login time:', error);
+            });
+    };
+
+
     const handleSignIn = () => {
         const token = localStorage.getItem('token');
         console.log("token "+token);
@@ -38,10 +73,14 @@ const SignIn = () => {
 
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('token', data.accessToken);
+                localStorage.setItem('email', data.email);
                 console.log("token "+token);
                 saveTokenToLocalStorage(data.accessToken);
+
+                sendLastLogin();
+
                 // Перенаправляем на другую страницу
-               window.location.href = '/MainPage';
+               // window.location.href = '/MainPage';
                //  navigate(`/userinfo/${username}`);
             })
             .catch(error => {
