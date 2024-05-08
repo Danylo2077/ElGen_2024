@@ -18,8 +18,9 @@ public class Post {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "images")
-    private String images;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user; // Ссылка на пользователя, который создал этот пост
 
     @ManyToMany
     @JoinTable(
@@ -29,33 +30,6 @@ public class Post {
     )
     private List<MessageTag> tags;
 
-    // Геттер для id
-    public Long getId() {
-        return id;
-    }
-
-    // Сеттер для id
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    // Геттер для тексту
-    public String getText() {
-        return text;
-    }
-
-    // Сеттер для тексту
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    // Геттер для зображень
-    public String getImages() {
-        return images;
-    }
-
-    // Сеттер для зображень
-    public void setImages(String images) {
-        this.images = images;
-    }
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<FileData> fileDataList;
 }
