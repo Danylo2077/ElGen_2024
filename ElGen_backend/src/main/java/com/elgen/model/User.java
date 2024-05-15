@@ -43,9 +43,6 @@ public class User {
                 ", userAccountStatusId=" + userAccountStatusId +
                 ", userTagId=" + userTagId +
                 ", username='" + username + '\'' +
-                ", userAccountStatus=" + userAccountStatus +
-                ", role=" + role +
-                ", userTag=" + userTag +
                 '}';
     }
 
@@ -79,18 +76,6 @@ public class User {
 
     @Column(name = "user_name")
     private String username;
-
-    @ManyToOne
-    @JoinColumn(name = "user_account_status_id", referencedColumnName = "user_account_status_id", insertable = false, updatable = false)
-    private UserAccountStatus userAccountStatus;
-
-    @ManyToOne
-    @JoinColumn(name = "user_role_id", referencedColumnName = "user_role_id", insertable = false, updatable = false)
-    private UserRole role;
-
-    @ManyToOne
-    @JoinColumn(name = "user_tag_id", referencedColumnName = "user_tag_id", insertable = false, updatable = false)
-    private UserTag userTag;
 
     public User(String username, String email, String encode) {
         this.username = username;
