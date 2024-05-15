@@ -5,7 +5,7 @@ import UserInfo from "../organism/UserInfo"
 import './styles/UserPage.css';
 
 const UserPage = () => {
-    const token = localStorage.getItem('token');
+    localStorage.setItem('lastTab', '/UserPage');
 
     // console.log("token "+token);
     return (

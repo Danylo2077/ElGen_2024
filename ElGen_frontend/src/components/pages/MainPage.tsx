@@ -8,6 +8,7 @@ import './styles/MainPage.css'
 
 
 const MainPage = () => {
+    localStorage.setItem('lastTab', '/MainPage');
     return (
         <div className='main-page'>
             <div className='background'></div>

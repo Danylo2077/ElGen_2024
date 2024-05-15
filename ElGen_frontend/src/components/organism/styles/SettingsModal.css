@@ -9,6 +9,8 @@
     padding-right: 5px;
     background-color: #1e1854;
     margin-bottom: 1000px;
+    margin-top: -100px;
+    margin-left: 100px;
     border-radius: 10px;
     z-index: 9999;
     border-color: #999999;
@@ -57,6 +59,7 @@
     padding-bottom: 4px;
     margin-bottom: 30px;
     margin-right: 0px;
+    margin-left: 10px;
     display: inline-block; /* Добавляем это свойство */
 }
 
@@ -81,7 +84,35 @@
     background-color: white;
     color: #0C0F29;
 }
+.icon-container
+{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color:#FFF;
+    margin-right: 10px;
+    margin-left: 30px;
+    margin-top: -0px;
+    margin-bottom: 30px;
+    box-shadow: -0px -8px 30px #13172a;
+}
+.icon
+{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color:#FFF;
+    margin-right: 10px;
+    margin-left: 0px;
+    margin-top: -0px;
+    margin-bottom: 30px;
+    box-shadow: -0px -8px 30px #13172a;
+}
+.icon-container:hover
+{
+    cursor: pointer;
+    box-shadow: 0 0 10px 10px rgb(73, 78, 143);
+}
 
 .input {
-
 }

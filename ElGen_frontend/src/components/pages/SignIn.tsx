@@ -14,6 +14,7 @@ import {saveTokenToLocalStorage} from "../../scripts/SaveToken";
 
 
 const SignIn = () => {
+    localStorage.setItem('lastTab', '/SignIn');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();

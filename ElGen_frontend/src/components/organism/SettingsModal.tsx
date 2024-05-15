@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import "./styles/SettingsModal.css";
 import "../pages/styles/UserPage.css";
 import "./UserInfoHandling";
+import Icon from '../atoms/Icon';
+
 import UserInfoHandling from "./UserInfoHandling";
 import {saveTokenToLocalStorage} from "../../scripts/SaveToken";
 
@@ -14,8 +16,11 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onClose }) 
     const [bio, setBio] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [selectedImage, setSelectedImage] = useState<File | null>(null); // Состояние для хранения выбранного изображения
+
     const oldUserTag = localStorage.getItem('username');
     const token = localStorage.getItem('token');
+
 
 
     useEffect(() => {
@@ -90,6 +95,23 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onClose }) 
         }
     };
 
+    const handleIconClick = () => {
+        // При клике на иконку открывается окно выбора файла
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = (event: Event) => {
+            const target = event.target as HTMLInputElement;
+            const files = target.files;
+            if (files && files.length > 0) {
+                setSelectedImage(files[0]);
+            }
+        };
+        input.click();
+    };
+
+
+
 
     return (
         <div className={`modal ${isOpen ? 'open' : ''}`}>
@@ -97,18 +119,28 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onClose }) 
                 <span className="close" onClick={onClose}>&times;</span>
                 <form onSubmit={handleSubmit}>
                     <div className="inputs">
+                        <div className='icon-container' onClick={handleIconClick}>
+                            {/* Передаем выбранное изображение в компонент Icon */}
+                            <Icon iconSource={selectedImage ? URL.createObjectURL(selectedImage) : undefined}
+                                 className='icon' altName="Selected Image" imageSize={selectedImage ? "100px" : "100px"}/>
+                        </div>
+
                         <label>
-                            Bio:
-                            <input className='write-here' type="text" value={bio} onChange={(e) => setBio(e.target.value)}/>
+                        Bio:
+                            <input className='write-here' type="text" value={bio}
+                                   onChange={(e) => setBio(e.target.value)}/>
                         </label>
                         <label>
                             Email:
-                            <input className='write-here' type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <input className='write-here' type="email" value={email}
+                                   onChange={(e) => setEmail(e.target.value)}/>
                         </label>
                         <label>
                             Password:
-                            <input className='write-here' type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                            <input className='write-here' type="text" value={password}
+                                   onChange={(e) => setPassword(e.target.value)}/>
                         </label>
+
                         <button type="submit" id='modal-save-btn'>Save</button>
                     </div>
                 </form>

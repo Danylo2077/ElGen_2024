@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 
 
 const SignUp = () => {
+    localStorage.setItem('lastTab', '/SignUp');
     const handleSignUp = () => {
         console.log('Регистрация пользователя...');
         // Здесь можно выполнить другие действия, связанные с регистрацией пользователя
