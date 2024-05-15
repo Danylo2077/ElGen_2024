@@ -44,21 +44,17 @@ public class PostController {
         return post.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Пост запрос на создание поста с хештегами
     // Пост запрос на создание поста с хештегами и несколькими файлами
     @PostMapping("/posts")
-    public ResponseEntity<Post> createPost(@RequestParam("files") MultipartFile[] files, @RequestParam("post") String postJson) throws IOException {
+    public ResponseEntity<Post> createPost(@RequestParam("files") MultipartFile[] files,
+                                           @RequestParam("post") String postJson) throws IOException {
         try {
-            // Преобразовать JSON в объект Post
             ObjectMapper objectMapper = new ObjectMapper();
             Post post = objectMapper.readValue(postJson, Post.class);
 
-            // Инициализируем список для хранения информации о файлах
             List<FileData> fileDataList = new ArrayList<>();
 
-            // Обрабатываем каждый файл из массива
             for (MultipartFile file : files) {
-                // Создаем объект FileData для сохранения информации о файле в базе данных
                 String filePath = fileDataService.uploadFileToFileDirectory(file);
                 FileData fileData = FileData.builder()
                         .name(file.getOriginalFilename())
@@ -66,14 +62,10 @@ public class PostController {
                         .filePath(filePath)
                         .build();
 
-                // Сохраняем информацию о файле в базе данных
-                FileData savedFileData = fileDataRepository.save(fileData);
-
-                // Добавляем сохраненный файл к списку файлов
-                fileDataList.add(savedFileData);
+                fileData.setPost(post); // Устанавливаем связь с постом
+                fileDataList.add(fileData);
             }
 
-            // Устанавливаем список файлов для поста
             post.setFileDataList(fileDataList);
 
             // Сохраняем теги сообщения
@@ -97,6 +89,13 @@ public class PostController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+
+
+
+
+
+
 
 
 

@@ -22,20 +22,19 @@ public class FileDataServiceImpl implements FileDataService {
     private final String FILE_PATH = "C:\\Users\\48574\\IdeaProjects\\ElGen_2024\\ElGen_backend\\uploads\\";
     @Override
     public String uploadFileToFileDirectory(MultipartFile file) throws IOException {
-        String filePath = FILE_PATH+file.getOriginalFilename();//absolute path
-        // TODO Auto-generated method stub
-        FileData fileData = fileDataRepository.save(FileData.builder()
+        String filePath = FILE_PATH + file.getOriginalFilename(); // Абсолютный путь
+        // Создаем объект FileData, но не сохраняем его пока
+        FileData fileData = FileData.builder()
                 .name(file.getOriginalFilename())
                 .type(file.getContentType())
-                .filePath(filePath).build());
+                .filePath(filePath)
+                .build();
 
-        //copy your file into that particular path
+        // Копируем файл на указанное место
         file.transferTo(new java.io.File(filePath));
 
-        if(fileData!= null) {
-            return "file uploaded successfully : "+file.getOriginalFilename()+ " and Files uploaded path is :"+filePath;
-        }
-        return null;
+        // Возвращаем только путь к файлу, без сохранения объекта FileData
+        return filePath;
     }
 
     @Override

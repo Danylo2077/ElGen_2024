@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,6 @@ public class Post {
     )
     private List<MessageTag> tags;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<FileData> fileDataList;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FileData> fileDataList = new ArrayList<>();
 }
