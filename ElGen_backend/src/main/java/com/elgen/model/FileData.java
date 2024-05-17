@@ -28,4 +28,9 @@ public class FileData {
     @JsonIgnore
     private Post post;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id") // Название столбца с идентификатором пользователя в таблице file_data
+    @JsonIgnore
+    private User user; // Связь с пользователем
+
 }

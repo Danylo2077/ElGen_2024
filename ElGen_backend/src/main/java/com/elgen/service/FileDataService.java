@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface FileDataService {
 
-    String uploadFileToFileDirectory(MultipartFile file) throws IOException;
+    String uploadFileToFileDirectory(MultipartFile file, String filepath) throws IOException;
 
     byte[] downloadFileFromFileDirectory(String fileName) throws IOException;
 

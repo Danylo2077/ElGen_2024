@@ -19,7 +19,7 @@ public class Post {
     @Column(name = "text")
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user; // Ссылка на пользователя, который создал этот пост
 

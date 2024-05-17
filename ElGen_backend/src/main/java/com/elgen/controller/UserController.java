@@ -1,15 +1,24 @@
 package com.elgen.controller;
 
+import com.elgen.model.FileData;
 import com.elgen.model.User;
 import com.elgen.payload.response.MessageResponse;
+import com.elgen.repository.FileDataRepository;
+import com.elgen.service.FileDataService;
 import com.elgen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -20,9 +29,17 @@ public class UserController {
     @Autowired
     PasswordEncoder encoder;
 
+    private final FileDataService fileDataService;
+    private final FileDataRepository fileDataRepository;
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    @Value("${filePath}")
+    private String filePath;
+
+
+    public UserController(FileDataService fileDataService, FileDataRepository fileDataRepository, UserService userService) {
+        this.fileDataService = fileDataService;
+        this.fileDataRepository = fileDataRepository;
         this.userService = userService;
     }
 
@@ -47,6 +64,67 @@ public class UserController {
         });
 
         return ResponseEntity.ok(new MessageResponse("User`s username changed successfully!"));
+    }
+
+    @PutMapping("/put/avatar/{username}")
+    public ResponseEntity<?> uploadImageToFileDirectory(@PathVariable String username, @RequestParam("file") MultipartFile file) throws IOException {
+        // Находим пользователя по имени пользователя
+        Optional<User> optionalUser = userService.getUserByUsername(username);
+        if (optionalUser.isEmpty()) {
+            // Возвращаем ResponseEntity с ошибкой, если пользователь не найден
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+
+        // Получаем пользователя из Optional
+        User user = optionalUser.get();
+
+        // Проверяем, существует ли уже запись о файле для данного пользователя
+        FileData existingFileData = fileDataRepository.findByUser(user);
+
+
+
+        if (existingFileData != null) {
+            String randomUUID = String.valueOf(UUID.randomUUID());
+            fileDataService.uploadFileToFileDirectory(file,randomUUID);
+            existingFileData.setName(randomUUID + "_"+ file.getOriginalFilename());
+            existingFileData.setType(file.getContentType());
+            existingFileData.setFilePath(filePath + File.separator + randomUUID + "_"+ file.getOriginalFilename());
+            fileDataRepository.save(existingFileData);
+            return ResponseEntity.status(HttpStatus.OK).body(existingFileData.getName());
+        } else {
+            String randomUUID = String.valueOf(UUID.randomUUID());
+            fileDataService.uploadFileToFileDirectory(file, randomUUID);
+            FileData fileData = new FileData();
+            fileData.setName(UUID.randomUUID() + "_"+ file.getOriginalFilename());
+            fileData.setType(file.getContentType());
+            fileData.setFilePath(filePath + File.separator + randomUUID + "_"+ file.getOriginalFilename());
+            fileData.setUser(user);
+            fileDataRepository.save(fileData);
+            return ResponseEntity.status(HttpStatus.OK).body(fileData.getName());
+        }
+
+
+    }
+
+
+    @GetMapping("/avatar/{username}")
+    public ResponseEntity<byte[]> downloadImageFromFileDirectory(@PathVariable String username){
+        Optional<User> optionalUser = userService.getUserByUsername(username);
+
+        User user = optionalUser.get();
+
+        FileData file = fileDataRepository.findByUser(user);
+
+        byte[] downloadFile = new byte[0];
+        try {
+            downloadFile = fileDataService.downloadFileFromFileDirectory(file.getName());
+        } catch (IOException e) {
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Only JPG, JPEG or PNG");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .contentType(MediaType.IMAGE_PNG)
+                .body(downloadFile);
     }
 
     @GetMapping("/get/name/{name}")

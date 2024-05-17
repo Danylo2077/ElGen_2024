@@ -9,16 +9,20 @@ import com.elgen.repository.MessageTagRepository;
 import com.elgen.service.FileDataService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/posts")
@@ -29,19 +33,15 @@ public class PostController {
     private final FileDataRepository fileDataRepository;
     private final MessageTagRepository tagRepository;
 
+    @Value("${filePath}")
+    private String filePath;
+
     @Autowired
     public PostController(PostRepository postRepository, FileDataService fileDataService, FileDataRepository fileDataRepository, MessageTagRepository tagRepository) {
         this.postRepository = postRepository;
         this.fileDataService = fileDataService;
         this.fileDataRepository = fileDataRepository;
         this.tagRepository = tagRepository;
-    }
-
-    // Гет запрос по айдишнику для показа содержимого поста
-    @GetMapping("/{postId}")
-    public ResponseEntity<Post> getPostById(@PathVariable Long postId) {
-        Optional<Post> post = postRepository.findById(postId);
-        return post.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Пост запрос на создание поста с хештегами и несколькими файлами
@@ -55,11 +55,12 @@ public class PostController {
             List<FileData> fileDataList = new ArrayList<>();
 
             for (MultipartFile file : files) {
-                String filePath = fileDataService.uploadFileToFileDirectory(file);
+                String randomUUID = String.valueOf(UUID.randomUUID());
+                fileDataService.uploadFileToFileDirectory(file, randomUUID);
                 FileData fileData = FileData.builder()
-                        .name(file.getOriginalFilename())
+                        .name(randomUUID + "_" + file.getOriginalFilename())
                         .type(file.getContentType())
-                        .filePath(filePath)
+                        .filePath(filePath + File.separator + randomUUID + "_"+ file.getOriginalFilename())
                         .build();
 
                 fileData.setPost(post); // Устанавливаем связь с постом
@@ -93,45 +94,29 @@ public class PostController {
 
 
 
+    @GetMapping("/{postId}")
+    public ResponseEntity<?> getPostWithTagsAndFiles(@PathVariable Long postId) {
+        // Попытка получить пост с указанным postId
+        Optional<Post> post = postRepository.findById(postId);
+
+        if (post != null) {
+            // Если пост найден, вернуть его вместе с кодом 200 OK
+            return ResponseEntity.ok(post);
+        } else {
+            // Если пост не найден, вернуть код 404 Not Found
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 
+    @GetMapping("/photo/{fileName}")
+    public ResponseEntity<?> downloadImageFromFileDirectory(@PathVariable String fileName) throws IOException{
+        byte[] downloadFile = fileDataService.downloadFileFromFileDirectory(fileName);
 
-
-
-
-
-
-
-    // Пут запрос на изменение поста
-//    @PutMapping("/{postId}")
-//    public ResponseEntity<Post> updatePost(@PathVariable Long postId, @RequestBody Post updatedPost) {
-//        Optional<Post> postOptional = postRepository.findById(postId);
-//        if (postOptional.isEmpty()) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        Post post = postOptional.get();
-//        post.setText(updatedPost.getText());
-//        post.setImages(updatedPost.getImages());
-//
-//        List<MessageTag> updatedTags = updatedPost.getTags();
-//        List<MessageTag> savedTags = new ArrayList<>();
-//
-//        for (MessageTag tag : updatedTags) {
-//            // Проверяем, сохранен ли тег в базе данных
-//            if (tag.getMessageTagId() == null) {
-//                // Если тег еще не сохранен, сохраняем его
-//                savedTags.add(tagRepository.save(tag));
-//            } else {
-//                // Если тег уже сохранен, используем его существующий идентификатор
-//                savedTags.add(tag);
-//            }
-//        }
-//
-//        post.setTags(savedTags);
-//
-//        Post savedPost = postRepository.save(post);
-//        return ResponseEntity.ok(savedPost);
-//    }
+        return ResponseEntity.status(HttpStatus.OK)
+                .contentType(MediaType.valueOf("image/png"))
+                .body(downloadFile);
+    }
 
 
     // Делит запрос на удаление поста

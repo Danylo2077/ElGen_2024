@@ -83,4 +83,7 @@ public class User {
         this.password = encode;
     }
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private FileData avatar;
+
 }
