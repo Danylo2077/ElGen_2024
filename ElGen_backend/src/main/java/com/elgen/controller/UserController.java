@@ -82,7 +82,9 @@ public class UserController {
         FileData existingFileData = fileDataRepository.findByUser(user);
 
 
-
+        if(!("image/jpeg".equals(file.getContentType()) || "image/png".equals(file.getContentType()))){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Only JPG, JPEG, PNG");
+        }
         if (existingFileData != null) {
             String randomUUID = String.valueOf(UUID.randomUUID());
             fileDataService.uploadFileToFileDirectory(file,randomUUID);

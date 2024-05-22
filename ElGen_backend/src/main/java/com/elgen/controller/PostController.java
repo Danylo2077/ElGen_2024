@@ -46,7 +46,7 @@ public class PostController {
 
     // Пост запрос на создание поста с хештегами и несколькими файлами
     @PostMapping("/posts")
-    public ResponseEntity<Post> createPost(@RequestParam("files") MultipartFile[] files,
+    public ResponseEntity<?> createPost(@RequestParam("files") MultipartFile[] files,
                                            @RequestParam("post") String postJson) throws IOException {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -55,6 +55,9 @@ public class PostController {
             List<FileData> fileDataList = new ArrayList<>();
 
             for (MultipartFile file : files) {
+                if(!("image/jpeg".equals(file.getContentType()) || "image/png".equals(file.getContentType()))){
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Only JPG, JPEG, PNG");
+                }
                 String randomUUID = String.valueOf(UUID.randomUUID());
                 fileDataService.uploadFileToFileDirectory(file, randomUUID);
                 FileData fileData = FileData.builder()
