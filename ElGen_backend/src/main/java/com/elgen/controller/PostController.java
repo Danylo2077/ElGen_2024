@@ -8,6 +8,7 @@ import com.elgen.repository.PostRepository;
 import com.elgen.repository.MessageTagRepository;
 import com.elgen.service.FileDataService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -25,6 +26,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/posts")
 public class PostController {
 
@@ -45,32 +47,35 @@ public class PostController {
     }
 
     // Пост запрос на создание поста с хештегами и несколькими файлами
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/posts")
-    public ResponseEntity<?> createPost(@RequestParam("files") MultipartFile[] files,
-                                           @RequestParam("post") String postJson) throws IOException {
+    public ResponseEntity<?> createPost(@Nullable @RequestParam("files") MultipartFile[] files,
+                                        @RequestParam("post") String postJson) throws IOException {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             Post post = objectMapper.readValue(postJson, Post.class);
 
-            List<FileData> fileDataList = new ArrayList<>();
+            // Если есть файлы, обрабатываем их
+            if (files != null && files.length > 0) {
+                List<FileData> fileDataList = new ArrayList<>();
+                for (MultipartFile file : files) {
+                    if (!("image/jpeg".equals(file.getContentType()) || "image/png".equals(file.getContentType()))) {
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Only JPG, JPEG, PNG");
+                    }
+                    String randomUUID = String.valueOf(UUID.randomUUID());
+                    fileDataService.uploadFileToFileDirectory(file, randomUUID);
+                    FileData fileData = FileData.builder()
+                            .name(randomUUID + "_" + file.getOriginalFilename())
+                            .type(file.getContentType())
+                            .filePath(filePath + File.separator + randomUUID + "_" + file.getOriginalFilename())
+                            .build();
 
-            for (MultipartFile file : files) {
-                if(!("image/jpeg".equals(file.getContentType()) || "image/png".equals(file.getContentType()))){
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Only JPG, JPEG, PNG");
+                    fileData.setPost(post); // Устанавливаем связь с постом
+                    fileDataList.add(fileData);
                 }
-                String randomUUID = String.valueOf(UUID.randomUUID());
-                fileDataService.uploadFileToFileDirectory(file, randomUUID);
-                FileData fileData = FileData.builder()
-                        .name(randomUUID + "_" + file.getOriginalFilename())
-                        .type(file.getContentType())
-                        .filePath(filePath + File.separator + randomUUID + "_"+ file.getOriginalFilename())
-                        .build();
 
-                fileData.setPost(post); // Устанавливаем связь с постом
-                fileDataList.add(fileData);
+                post.setFileDataList(fileDataList);
             }
-
-            post.setFileDataList(fileDataList);
 
             // Сохраняем теги сообщения
             List<MessageTag> tags = post.getTags();
@@ -94,11 +99,12 @@ public class PostController {
         }
     }
 
+//TODO змінити назву ендпоінтів 
 
 
 
-    @GetMapping("/{postId}")
-    public ResponseEntity<?> getPostWithTagsAndFiles(@PathVariable Long postId) {
+    @GetMapping("/post/{postId}")
+    public ResponseEntity<?> getPostByPostId(@PathVariable Long postId) {
         // Попытка получить пост с указанным postId
         Optional<Post> post = postRepository.findById(postId);
 
@@ -109,6 +115,18 @@ public class PostController {
             // Если пост не найден, вернуть код 404 Not Found
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> getPostByUserId(@PathVariable Long userId) {
+        List<Post> postList = postRepository.findByUserUserId(userId);
+        List<Post> postList1 = new ArrayList<>();
+        for(int i = postList.size()-2; i<postList.size(); i++)
+        {
+            postList1.add(postList.get(i));
+        }
+
+        return ResponseEntity.ok(postList1);
     }
 
 

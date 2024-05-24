@@ -1,5 +1,6 @@
 package com.elgen.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +32,8 @@ public class Post {
     )
     private List<MessageTag> tags;
 
+
+    @Nullable
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FileData> fileDataList = new ArrayList<>();
 }
