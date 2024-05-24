@@ -1,24 +1,30 @@
-import React from 'react'
+import React from 'react';
 
-interface InputProps {
-    id?: string
-    placeholder?: string
-    type: string
-    name?: string
-    ref?: string
-    inputName?: string
-    autoComplete?: 'on' | 'off'
-    chekcedValue?: string
+export interface InputProps {
+    autoComplete?: 'on' | 'off';
+    type: string;
+    placeholder?: string;
+    inputName?: string;
+    id?: string;
+    name?: string;
+    ref?: string;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    chekcedValue?: string;
 }
 
-export const Input = (props: InputProps) =>  {
+const Input: React.FC<InputProps> = (props) => {
     return (
-        <div>
-            <form action="">
-                <input autoComplete={props.autoComplete} type={props.type} placeholder={props.placeholder} name={props.name} ref={props.ref} className={props.inputName} id={props.id}/>
-            </form>
-        </div>
+        <input
+            autoComplete={props.autoComplete}
+            type={props.type}
+            placeholder={props.placeholder}
+            name={props.inputName}
+            id={props.id}
+            onChange={props.onChange}
+            ref={props.ref}
+            className={props.inputName}
+        />
     );
-}
+};
 
-export default Input
+export default Input;

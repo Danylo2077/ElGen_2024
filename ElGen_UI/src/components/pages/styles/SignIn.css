@@ -34,8 +34,9 @@ align-items: center;
 flex-flow: column;
 }
 .sign-in input {
-border-color: linear-gradient(rgba(0, 0, 0, 0.4745098039), rgba(73, 134, 253, 0.8196078431));
-padding: 0 0 0 2.5rem;
+    border-width: 2px; /* задаем ширину границы */
+    border-style: solid; /* задаем стиль границы */
+    border-image: linear-gradient(rgba(0, 0, 0, 0.4745098039), rgba(73, 134, 253, 0.8196078431)) 1; /* применяем линейный градиент к границе */padding: 0 0 0 2.5rem;
 color: #868484;
 font-family: Open Sans;
 font-size: 1.25rem;
@@ -63,12 +64,13 @@ display: flex;
 width: 29.375rem;
 justify-content: space-between;
 margin-bottom: 0.7rem;
+    margin-right: 0px;
 letter-spacing: 0.05rem;
 }
 
 .sign-in .remember-forgot .remember-forgot-wrapper {
     display: flex;
-    width: 9rem;
+    width: 10rem;
     justify-content: space-between;
     position: relative;
 }
@@ -87,8 +89,9 @@ cursor: pointer;
 .sign-in .remember-forgot input {
 width: 0.89231rem;
 height: 0.912rem;
-position: absolute;
-bottom: -50%;
+position: relative;
+bottom: -10%;
+    margin-left: 0px;
 }
 .sign-in .remember-forgot label {
 color: rgba(255, 255, 255, 0.66);
@@ -98,16 +101,18 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 letter-spacing: 0.07rem;
+    margin-right: 10px;
 }
 
 .sign-in .eye-closed, .eye-opened {
     background:none;
     border:none;
-    transform: translateX(29rem) translateY(-4.2rem);
+    transform: translateX(-5rem) translateY(0rem);
+    position: relative;
 }
 
 .sign-in .eye-opened {
-    transform: translateX(29rem) translateY(-4.8rem);;
+    transform: translateX(-5rem) translateY(0rem);
 }
 
 .sign-in .continue-btn {
@@ -167,6 +172,8 @@ cursor:pointer;
 .sign-in .passWrapper {
     height: 5.8rem;
     margin-bottom: 1rem;
+    margin-left: 25px;
+    position: relative;
 }
 
 .sign-in .forgot-pass-window {

@@ -27,12 +27,16 @@ public class UserService {
         return userRepository.findById(userId);
     }
 
-    public List<User> getUsersByName(String name) {
+    public Optional<User> getUserByName(String name) {
         return userRepository.findByName(name);
     }
 
     public List<User> getUsersByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public Optional<User> getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
     public User createUser(User user) {
         return userRepository.save(user);
