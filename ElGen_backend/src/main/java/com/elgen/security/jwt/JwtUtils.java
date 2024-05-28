@@ -47,14 +47,17 @@ public class JwtUtils {
 
   public boolean validateJwtToken(String authToken) {
     try {
-      Jwts.parserBuilder().setSigningKey(key()).build().parse(authToken);
+      // This will throw an exception if the token's signature is invalid
+      Jws<Claims> claimsJws = Jwts.parserBuilder()
+              .setSigningKey(key())
+              .build()
+              .parseClaimsJws(authToken);
+
+      // If we reach here, the token is successfully validated
       return true;
-    } catch (MalformedJwtException e) {
+    } catch (JwtException e) {
+      // Catch all JwtException types: MalformedJwtException, ExpiredJwtException, UnsupportedJwtException, and others
       logger.error("Invalid JWT token: {}", e.getMessage());
-    } catch (ExpiredJwtException e) {
-      logger.error("JWT token is expired: {}", e.getMessage());
-    } catch (UnsupportedJwtException e) {
-      logger.error("JWT token is unsupported: {}", e.getMessage());
     } catch (IllegalArgumentException e) {
       logger.error("JWT claims string is empty: {}", e.getMessage());
     }

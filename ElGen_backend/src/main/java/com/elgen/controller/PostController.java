@@ -97,10 +97,14 @@ public class PostController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
+    }//TODO змінити назву ендпоінтів
+
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllPosts(){
+        List<Post> postList = postRepository.findAll();
+        return ResponseEntity.ok(postList);
     }
-
-//TODO змінити назву ендпоінтів 
-
 
 
     @GetMapping("/post/{postId}")
