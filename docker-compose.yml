@@ -46,6 +46,7 @@ services:
         "spring.jpa.hibernate.ddl-auto": "update"}'
     volumes:
       - .m2:/root/.m2
+      - /c/Users/48574/Desktop/ElGen_BACK:/app/uploads
     stdin_open: true
     tty: true
 

@@ -33,7 +33,7 @@ sudo apt-get install mysql-client
 ```
 
 ```bash
-docker exec -it mysql-db mysql -uroot -proot ElGen
+mysql -u root -p -h 127.0.0.1 -P 3307 ElGen
 ```
 
 **password: root**
