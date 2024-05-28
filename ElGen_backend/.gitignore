@@ -1,0 +1,35 @@
+# Ignore Maven build files
+target/
+
+# Ignore IntelliJ IDEA local configuration files
+.idea/
+
+# Ignore JPABuddy files
+.jpb/
+
+# Ignore files created by IntelliJ IDEA
+*.iml
+*.iws
+*.ipr
+.idea/
+
+# Ignore IntelliJ IDEA user settings files
+.idea_modules/
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+*.classpath
+*.project
+*.settings/
+
+# Ignore temporary files
+*~
+*.swp
+*.log
+*.bak
+
+# Ignore Gradle build files (if using Gradle)
+# build/
+# .gradle/
