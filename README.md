@@ -1,30 +1,45 @@
-# ElGen_2024
-## Backend
-**Before you start working**
-1. Clean your DB using ```flyway:clean```
-2. Migrate new migration to your DB using ```flyway:migrate```
+# Docker Compose Spring Boot + MySQL
+## Getting Started
+**Install Docker** (skip this step if you already have Docker)
 
-**Also, use new endpoints:**
+Install Docker[https://docs.docker.com/install/]
 
-POST```localhost:8080/api/auth/signup``` to signUp new user
+How to install Docker on Ubuntu[https://docs.docker.com/engine/install/ubuntu/]
 
-**JSON**
-```json
-{
-    "username": "yourexample",
-    "password": "yourexample",
-    "email": "your@example.com"
-}
+## Prepare
+**! If you use windows, do all preparings in Git Bash, or use Windows Powershell with ```bash``` command.**
+```
+git clone git@github.com:Danylo2077/ElGen_2024.git
+```
+```
+сd ElGen_2024
+```
+```
+git checkout DevOps
+```
+```bash
+cat .env.example >> .env
 ```
 
-POST ```http://localhost:8080/api/auth/signin``` to signIn user
-
-**JSON**
-```json
-{
-    "username": "yourexample",
-    "password": "yourexample"
-}
+Update variables to your needs.
+## Install Project
+Run docker containers
+```
+docker compose up -d
+```
+## Prepare database
+```bash
+sudo apt-get install mysql-client
 ```
 
-P.S. remember your passwords because they will be encrypted 😜
+```bash
+docker exec -it mysql-db mysql -uroot -proot ElGen
+```
+
+**password: root**
+
+```sql
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+```

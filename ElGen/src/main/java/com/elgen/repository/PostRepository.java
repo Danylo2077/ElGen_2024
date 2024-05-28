@@ -10,5 +10,4 @@ import java.util.Optional;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByUserUserId(Long userId);
-    List<Post> findAll();
 }

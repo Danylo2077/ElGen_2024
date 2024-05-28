@@ -100,12 +100,6 @@ public class PostController {
     }//TODO змінити назву ендпоінтів
 
 
-    @GetMapping("/all")
-    public ResponseEntity<?> getAllPosts(){
-        List<Post> postList = postRepository.findAll();
-        return ResponseEntity.ok(postList);
-    }
-
 
     @GetMapping("/post/{postId}")
     public ResponseEntity<?> getPostByPostId(@PathVariable Long postId) {
